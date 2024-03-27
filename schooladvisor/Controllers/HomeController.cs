@@ -8,6 +8,9 @@ using System.Net;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Org.BouncyCastle.Tls;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using MySqlX.XDevAPI;
 
 namespace TestWeb.Controllers
 {
@@ -264,7 +267,7 @@ namespace TestWeb.Controllers
         {
             HttpClient client = new HttpClient();
             string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
-            string chatID = "";
+            string chatID = "521459468";
             string text = "*ODIO I FROCI*";
 
             Uri uri = new Uri(@"https://api.telegram.org/bot7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw/sendMessage?chat_id=521459468&parse_mode=MarkdownV2&text="+text);
@@ -272,6 +275,35 @@ namespace TestWeb.Controllers
             var response = await client.GetAsync(uri);
             ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
             return View("index.cshmtl");
+        }
+
+        public async Task<IActionResult> ProvaTelegramConPulsanti()
+        {
+            HttpClient client = new HttpClient();
+            string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
+            string chatID = "521459468";
+            string text = "*ODIO I FROCI*";
+
+            // Creazione della tastiera inline
+            var keyboard = new
+            {
+                inline_keyboard = new[]
+                {
+                    new[]
+                    {
+                        new { text = "Conferma✅", callback_data = "approved" },
+                        new { text = "Rifiuto❌", callback_data = "rejected" }
+                    }
+                }
+            };
+
+            var keyboardJson = JsonConvert.SerializeObject(keyboard);
+
+            Uri uri = new Uri($"https://api.telegram.org/bot{apikey}/sendMessage?chat_id={chatID}&parse_mode=MarkdownV2&text={text}&reply_markup={keyboardJson}");
+
+            var response = await client.GetAsync(uri);
+            ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
+            return View("ConfermaCommento");
         }
     }
 }

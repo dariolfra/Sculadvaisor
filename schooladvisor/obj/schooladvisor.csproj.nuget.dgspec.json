@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thoma\\source\\repos\\schooladvisor\\schooladvisor\\schooladvisor.csproj": {}
+    "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thoma\\source\\repos\\schooladvisor\\schooladvisor\\schooladvisor.csproj": {
+    "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thoma\\source\\repos\\schooladvisor\\schooladvisor\\schooladvisor.csproj",
+        "projectUniqueName": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
         "projectName": "schooladvisor",
-        "projectPath": "C:\\Users\\thoma\\source\\repos\\schooladvisor\\schooladvisor\\schooladvisor.csproj",
+        "projectPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
         "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thoma\\source\\repos\\schooladvisor\\schooladvisor\\obj\\",
+        "outputPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
