@@ -33,14 +33,14 @@ namespace TestWeb.Controllers
 
         public IActionResult Index()
         {
-            var trips = gestione.GetTripList();
-            return View(trips);
+            return View();
         }
 
         //[OnlyAdmin]
-        public IActionResult Privacy()
+        public IActionResult Uscite()
         {
-            return View();
+            var trips = gestione.GetTripList();
+            return View(trips);
         }
         //public IActionResult ProvaJson()
         //{
@@ -263,6 +263,12 @@ namespace TestWeb.Controllers
         //    _session.Clear();
         //    return RedirectToAction("Index");
         //}
+       
+        
+        
+        
+        
+        
         public async Task<IActionResult> ProvaTelegram()
         {
             HttpClient client = new HttpClient();

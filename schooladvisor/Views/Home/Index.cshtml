@@ -54,23 +54,3 @@
         $('.carousel').carousel();
     });
 </script>
-<table class="table table-bordered table-light center">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Description</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var trip in Model)
-        {
-                <tr>
-                    <td>@trip.tripName</td>
-                    <td>@trip.tripDate</td>
-                    <td>@trip.tripDescription</td>
-                </tr>
-        }
-    </tbody>
-</table>
