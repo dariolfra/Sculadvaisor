@@ -71,7 +71,7 @@
     @foreach (var trip in Model)
     {
           <div class="card">
-          <img src="@trip.image" alt="Lago di Braies">
+          <img src="@trip.image">
 
           <div class="card__details">
 
@@ -79,8 +79,15 @@
 
             <p>@trip.tripDescription</p>
           </div>
-          <button>Lascia Recensione</button>
+          <button onclick="redirectLoginFirebase()">Lascia Recensione</button>
         </div>
     }
     <main/>
 </div>
+
+
+<script>
+    function redirectLoginFirebase(){
+        window.location.href = "/Home/LoginFirebase"
+    }
+</script>

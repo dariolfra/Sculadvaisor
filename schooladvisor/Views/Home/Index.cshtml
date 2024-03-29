@@ -1,7 +1,7 @@
-﻿@model List<Trip>
+﻿@model List<Trip> 
 
 @{
-    List<string> imagePath = new List<string>() { "/img/goofyCat.jpeg", "/img/foglioProtocollo.gif"};
+    List<string> imagePath = new List<string>();
 }
 
 <style>
@@ -13,6 +13,12 @@
 <div class="container">
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="hover">
         <div class="carousel-inner" role="listbox">
+
+            @foreach (var trip in Model)
+            {
+                imagePath.Add(trip.image);
+            }
+
             @for (var i = 0; i < imagePath.Count(); i++)
             {
                 var showClass = (i == 0 ? "active" : "");
@@ -21,7 +27,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img src="@path" />
+                                    <img src="@path" />                                    
                                 </p>
                             </div>
                         </div>

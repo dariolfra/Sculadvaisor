@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "INKOfUTQUurI5z/htQJuNYUkbd+cOVljTc0Pt/HFbTI=",
+  "Hash": "2xbZ7AU4O82awEsNYCPQfBJv8QZO6zMxWMPV7loXCro=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\goofyCat.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\pipone.jpeg",
+      "SourceId": "schooladvisor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\wwwroot\\",
+      "BasePath": "_content/schooladvisor",
+      "RelativePath": "img/pipone.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\pipone.jpeg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\wwwroot\\js\\site.js",

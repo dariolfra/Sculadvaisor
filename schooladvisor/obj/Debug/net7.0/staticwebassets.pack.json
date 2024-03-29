@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\img\\goofyCat.jpeg"
     },
     {
+      "Id": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\pipone.jpeg",
+      "PackagePath": "staticwebassets\\img\\pipone.jpeg"
+    },
+    {
       "Id": "C:\\Users\\thoma\\OneDrive\\Desktop\\Sculadvaisor\\schooladvisor\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
