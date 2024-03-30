@@ -11,6 +11,7 @@ using Org.BouncyCastle.Tls;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySqlX.XDevAPI;
+using Microsoft.AspNetCore.Http;
 
 namespace TestWeb.Controllers
 {
@@ -40,7 +41,12 @@ namespace TestWeb.Controllers
         {
             var trips = gestione.GetTripList();
             return View(trips);
-        }      
+        }
+        public IActionResult CommentaUscita(string selectedTripId)
+        {
+            var trip = gestione.GetTrip(selectedTripId);
+            return View(trip);
+        }
         public async Task<IActionResult> ProvaTelegram()
         {
             HttpClient client = new HttpClient();
@@ -52,7 +58,7 @@ namespace TestWeb.Controllers
 
             var response = await client.GetAsync(uri);
             ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
-            return View("index.cshmtl");
+            return View("Index");
         }
         public async Task<IActionResult> ProvaTelegramConPulsanti()
         {
@@ -90,7 +96,7 @@ namespace TestWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginFirebase(System.Net.NetworkCredential credential)
+        public async Task<IActionResult> LoginFirebase(System.Net.NetworkCredential credential, string selectedTripId)
         {
             var config = new FirebaseAuthConfig()
             {
@@ -118,7 +124,14 @@ namespace TestWeb.Controllers
             if (userCredential != null)
             {
                 _session.SetString("utente", "admin");
-                return RedirectToAction("Index");
+                if (!string.IsNullOrEmpty(selectedTripId))
+                {
+                    return RedirectToAction("CommentaUscita", new { selectedTripId = selectedTripId });
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             else
             {

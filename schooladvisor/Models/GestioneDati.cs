@@ -16,8 +16,15 @@ namespace schooladvisor.Models
         public List<Trip> GetTripList()
         {
             using var con = new MySqlConnection(s);
-            return con.Query<Trip>("Select * from trips").ToList();
+            return con.Query<Trip>("SELECT * from trips").ToList();
         }
+
+        public Trip GetTrip(string id)
+        {
+            using var con = new MySqlConnection(s);
+            return con.QueryFirstOrDefault<Trip>("SELECT * FROM trips WHERE tripID = @Id", new { Id = id });
+        }
+
 
         ////Metodi CRUD
         //public List<Studente> ListaStudenti()
@@ -69,7 +76,7 @@ namespace schooladvisor.Models
 
         //    string query = @"UPDATE alunni SET Voto = @Voto WHERE Matricola = @Matricola";
         //    var param = new { Voto = studente.Voto, Matricola = studente.Matricola };
-            
+
         //    bool esito;
         //    try
         //    {

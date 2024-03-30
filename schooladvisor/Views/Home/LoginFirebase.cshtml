@@ -1,22 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Login (Firebase)";
     @model System.Net.NetworkCredential;
+
 }
 <h1>@ViewData["Title"]</h1>
 <div class="text-danger"> @ViewData["errore"] </div>
 
-    <form asp-controller="Home" asp-action="LoginFirebase" method="post">
-        <div class="form-group">
+<form id="loginForm" asp-controller="Home" asp-action="LoginFirebase" method="post">
+    <div class="form-group">
         <label for="Username">Username</label>
         <input type="text" name="Username" class="form-control" id="Username" required />
-        </div>
+    </div>
 
-        <div class="form-group">
+    <div class="form-group">
         <label for="Password">Password</label>
         <input type="password" name="Password" id="Password" class="form-control" required />
-        </div>
+    </div>
 
-        <div class="form-group mt-2">
-            <button type="submit" class="btn btn-primary">Accedi</button>
-        </div>
-    </form>
+    <div class="form-group mt-2">
+        <button type="submit" class="btn btn-primary">Accedi</button>
+    </div>
+</form>
+
+<script>
+    var selectedTripId = sessionStorage.getItem('SelectedTripId');
+
+    if (selectedTripId) {
+        // per far si che l'id dell'uscita venga passato al metodo post dell'homecontroller
+        // aggiungo l'id come campo nascosto, in questo modo il dato viene passato assieme alle credenziali
+
+        var hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'SelectedTripId';
+        hiddenInput.value = selectedTripId;
+        document.getElementById('loginForm').appendChild(hiddenInput);
+        sessionStorage.removeItem('SelectedTripId');
+    }
+</script>
