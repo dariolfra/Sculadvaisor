@@ -47,6 +47,12 @@ namespace TestWeb.Controllers
             var trip = gestione.GetTrip(selectedTripId);
             return View(trip);
         }
+        [HttpPost]
+        public async Task<IActionResult> CommentaUscita(string comment,string email,string selectedTripId)
+        {
+            gestione.RegisterComment(comment,email,selectedTripId);
+            return View("ConfermaCommento");
+        }
         public async Task<IActionResult> ProvaTelegram()
         {
             HttpClient client = new HttpClient();
@@ -126,7 +132,7 @@ namespace TestWeb.Controllers
                 _session.SetString("utente", "admin");
                 if (!string.IsNullOrEmpty(selectedTripId))
                 {
-                    return RedirectToAction("CommentaUscita", new { selectedTripId = selectedTripId });
+                    return RedirectToAction("CommentaUscita", new { selectedTripId = selectedTripId, email = email});
                 }
                 else
                 {

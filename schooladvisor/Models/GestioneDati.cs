@@ -25,6 +25,16 @@ namespace schooladvisor.Models
             return con.QueryFirstOrDefault<Trip>("SELECT * FROM trips WHERE tripID = @Id", new { Id = id });
         }
 
+        public void RegisterComment(string comment,string email,string selectedTripId)
+        {
+            using var con = new MySqlConnection(s);
+
+            string sql = "INSERT INTO reviews (UserID,reviewComment,tripID) VALUES (@Email, @Comment, @TripID)";
+
+            // Esegui l'istruzione SQL utilizzando Dapper
+            con.Execute(sql, new { Email = email, Comment = comment, TripID = selectedTripId});
+        }
+
 
         ////Metodi CRUD
         //public List<Studente> ListaStudenti()

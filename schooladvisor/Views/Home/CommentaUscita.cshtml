@@ -63,20 +63,38 @@
 
       cursor: pointer;
     }
+    .comment{
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        resize: none;
+        font-size: 16px;
+    }
+    .commentArea{
+        margin-bottom:5vh;
+    }
 
 </style>
 
 
 <h1>@ViewData["Title"]</h1>
-
- <div class="card">
-          <img src="@Model.image">
-
-          <div class="card__details">
-
-            <div class="name">@Model.tripName</div>
-
-            <p>@Model.tripDescription</p>
-          </div>
+<div class="container">
+     <div class="card">
+        <img src="@Model.image">
+        <div class="card__details">
+             <div class="name">@Model.tripName</div>
+             <p>@Model.tripDescription</p>
         </div>
-
+    </div>
+    <form id="submitComment" asp-controller="Home" asp-action="CommentaUscita" method="post">
+        <div class=commentArea>
+            <div class="commentBox">
+                <textarea name="Comment" class="comment" placeholder="Inserisci commento" rows="5" cols="40" data-val-required="The Description field is required." 
+                     data-val-maxlength-max="5000" data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'." 
+                     data-val="true"></textarea>
+                <button type="submit">Pubblica commento</button>
+            </div>
+        </div>
+    </form>
+</div>  
