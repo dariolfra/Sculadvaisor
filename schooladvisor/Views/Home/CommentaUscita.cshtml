@@ -74,7 +74,44 @@
     .commentArea{
         margin-bottom:5vh;
     }
+    /*rating*/
+    .rating {
+      display: inline-block;
+    }
 
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      float: right;
+      color: #ddd;
+    }
+
+    .rating label:before {
+      content: '\2605';
+      font-size: 36px;
+    }
+
+    .rating input:checked ~ label {
+      color: #f90;
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+      color: #f90;
+      cursor: pointer;
+    }
+
+    .rating input:checked + label:hover,
+    .rating input:checked ~ label:hover,
+    .rating label:hover ~ input:checked ~ label,
+    .rating input:checked ~ label:hover ~ label {
+      color: #ff0;
+      cursor: pointer;
+    }
+
+    
 </style>
 
 
@@ -88,7 +125,25 @@
         </div>
     </div>
     <form id="submitComment" asp-controller="Home" asp-action="CommentaUscita" method="post">
+
+        @*campi nascosti per trasmissione dati*@
+        <input type="hidden" name="email" value="@ViewData["email"]" />
+        <input type="hidden" name="selectedTripId" value="@Model.tripID" />
+        <input type="hidden" id="ratingValue" name="ratingValue" value="" />
+        
+
+
         <div class=commentArea>
+
+            <div class="rating">
+                  <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
+                  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
+                  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
+                  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
+                  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+            </div>
+
+
             <div class="commentBox">
                 <textarea name="Comment" class="comment" placeholder="Inserisci commento" rows="5" cols="40" data-val-required="The Description field is required." 
                      data-val-maxlength-max="5000" data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'." 
@@ -98,3 +153,24 @@
         </div>
     </form>
 </div>  
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ratingStars = document.querySelectorAll('.rating input');
+        const publishButton = document.querySelector('#publishButton');
+        const ratingValueField = document.querySelector('#ratingValue');
+
+        let selectedRating = null;
+
+        ratingStars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = this.value;
+            });
+        });
+
+        publishButton.addEventListener('click', function() {
+            ratingValueField.value = selectedRating;
+        });
+    });
+</script>

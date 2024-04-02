@@ -42,15 +42,16 @@ namespace TestWeb.Controllers
             var trips = gestione.GetTripList();
             return View(trips);
         }
-        public IActionResult CommentaUscita(string selectedTripId)
+        public IActionResult CommentaUscita(string selectedTripId,string email)
         {
+            ViewData["email"] = email;
             var trip = gestione.GetTrip(selectedTripId);
             return View(trip);
         }
         [HttpPost]
-        public async Task<IActionResult> CommentaUscita(string comment,string email,string selectedTripId)
+        public async Task<IActionResult> CommentaUscita(string comment,string email,string selectedTripId,string rating)
         {
-            gestione.RegisterComment(comment,email,selectedTripId);
+            gestione.RegisterComment(comment,email,selectedTripId,rating);
             return View("ConfermaCommento");
         }
         public async Task<IActionResult> ProvaTelegram()
