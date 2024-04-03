@@ -35,6 +35,13 @@ namespace schooladvisor.Models
             con.Execute(sql, new { Email = email, Comment = comment, TripID = selectedTripId, State = "sent", Rating = rating});
         }
 
+        public List<Review>GetApprovedComments(string selectedTripId)
+        {
+            using var con = new MySqlConnection(s);
+            string sql = "SELECT * FROM reviews JOIN trips ON trips.tripID = reviews.tripID WHERE reviewState='approved' AND trips.tripID=@Id";
+            return con.Query<Review>(sql, new {Id = selectedTripId}).ToList();
+        }
+
 
         ////Metodi CRUD
         //public List<Studente> ListaStudenti()

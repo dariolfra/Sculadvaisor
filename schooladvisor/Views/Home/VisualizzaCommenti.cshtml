@@ -1,0 +1,119 @@
+﻿@model Trip
+@{
+    ViewData["Title"] = "Commenti Uscita";
+}
+
+<style>
+
+    img {
+        width: 100%;
+        border-radius: 12px;
+        height: 400px;
+        object-fit: cover;
+    }   
+
+    .container{
+        max-width: 70vw;
+
+        margin: 0 auto;
+
+        margin-top: 5vh;
+    }
+
+    .card {
+
+          background-color: white;
+
+          border: 1px solid #bacdd8;
+
+          padding: 8px;
+
+          border-radius: 12px;
+          margin-bottom: 5vh;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 600;
+
+      margin-top: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #7f8c9b;
+      line-height: 150%;
+    }
+
+    .card__details {
+      padding: 16px 8px 8px 8px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+
+      font-weight: 600;
+      color: #0077ff;
+      background-color: #e0efff;
+
+      margin: 0 auto;
+      display: block;
+
+      cursor: pointer;
+    }
+    .reviewContainer{
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        resize: none;
+        font-size: 16px;
+        max-width: 70vw;
+        margin: 0 auto;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    .rating{
+        display: flex; 
+        margin-top: 10px; 
+    }
+    .postedBy{
+        color: black;
+    }
+    .stars{
+        color: #f90;
+    }
+  </style>
+
+
+<h1>@ViewData["Title"]</h1>
+<div class="container">
+     <div class="card">
+        <img src="@Model.image">
+        <div class="card__details">
+             <div class="name">@Model.tripName</div>
+             <p>@Model.tripDescription</p>
+        </div>
+    </div>
+</div>
+
+@foreach (var review in ViewData["ApprovedComments"] as List<Review>)
+{
+        <div class="reviewContainer">
+            <div class="rating">
+                <p class="postedBy">@review.userID</p>
+            @{
+                // Converte il valore numerico di reviewRating in stelle
+                var rating = "";
+                for (int i = 0; i < review.reviewRating; i++)
+                {
+                    rating += "&#9733;";
+                }
+            }
+                <p class="stars">@Html.Raw(rating)</p> 
+            </div>
+            <p>@review.reviewComment</p>
+        </div>
+}

@@ -20,4 +20,11 @@
     <None Include="wwwroot\img\goofyCat.jpeg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Home\VisualizzaCommenti.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -146,5 +146,16 @@ namespace TestWeb.Controllers
                 return View(new System.Net.NetworkCredential());
             }
         }
+
+        public IActionResult VisualizzaCommenti(string selectedTripId)
+        {
+            var trip = gestione.GetTrip(selectedTripId);
+            var approvedComments = gestione.GetApprovedComments(selectedTripId);
+
+            ViewData["ApprovedComments"] = approvedComments;
+
+            return View(trip);
+        }
+
     }
 }
