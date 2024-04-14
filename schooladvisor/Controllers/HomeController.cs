@@ -3,7 +3,7 @@ using System.Diagnostics;
 using schooladvisor.Models;
 using System.Text.Json;
 using System.Net;
-//using schooladvisor.Filters;
+using schooladvisor.Filters;
 
 using Firebase.Auth;
 using Firebase.Auth.Providers;
@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySqlX.XDevAPI;
 using Microsoft.AspNetCore.Http;
+
+//parcheggio tilde che porcaccio iddio non ce l'ho sulla tastiera
+// ----->  ~  <-----
 
 namespace TestWeb.Controllers
 {
@@ -37,6 +40,8 @@ namespace TestWeb.Controllers
             var trips = gestione.GetTripList();
             return View(trips);
         }
+
+        [OnlyAdmin]
         public IActionResult Uscite()
         {
             var trips = gestione.GetTripList();
@@ -96,7 +101,6 @@ namespace TestWeb.Controllers
             return View("ConfermaCommento");
         }
 
-
         public IActionResult LoginFirebase()
         {
             return View(new System.Net.NetworkCredential());
@@ -146,7 +150,6 @@ namespace TestWeb.Controllers
                 return View(new System.Net.NetworkCredential());
             }
         }
-
         public IActionResult VisualizzaCommenti(string selectedTripId)
         {
             var trip = gestione.GetTrip(selectedTripId);
@@ -157,5 +160,9 @@ namespace TestWeb.Controllers
             return View(trip);
         }
 
+        public IActionResult AccessoNegato()
+        {
+            return View();
+        }
     }
 }

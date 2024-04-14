@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/thoma/OneDrive/Desktop/DA FARE/Sculadvaisor/schooladvisor/Views/Home/AccessoNegato.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NvTmVnYXRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thoma/OneDrive/Desktop/DA FARE/Sculadvaisor/schooladvisor/Views/Home/AggiungiUscita.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZ2dpdW5naVVzY2l0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/thoma/OneDrive/Desktop/DA FARE/Sculadvaisor/schooladvisor/Views/Home/CommentaUscita.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21tZW50YVVzY2l0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

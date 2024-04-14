@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+Dqn14KKJH9K2UWFLB3zCzl4dL5fplHIQZwPAIE0nDM=",
+  "Hash": "0Y0X0F7WAonMRHofP9z+7i2R7MG/aeMjscpzAYFakeY=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\AccessDenied.png",
+      "SourceId": "schooladvisor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
+      "BasePath": "_content/schooladvisor",
+      "RelativePath": "img/AccessDenied.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\AccessDenied.png"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\foglioProtocollo.gif",

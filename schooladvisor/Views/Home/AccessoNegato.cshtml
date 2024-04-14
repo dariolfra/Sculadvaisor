@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Accesso Negato";
+    @model System.Net.NetworkCredential;
+
+}
+
+<style>
+    #container{
+        max-width: 70vw;
+        margin: 0 auto;
+        margin-top: 5vh;
+        text-align: center;
+    }
+</style>
+
+<div id="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <img src="~/img/AccessDenied.png"/>
+    <p>Non possiedi l'autorizzazione per visualizzare questa pagina. <br />
+       Accesso consentito solo ad amministratori</p> 
+</div>
