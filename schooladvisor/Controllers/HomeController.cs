@@ -41,7 +41,6 @@ namespace TestWeb.Controllers
             return View(trips);
         }
 
-        [OnlyAdmin]
         public IActionResult Uscite()
         {
             var trips = gestione.GetTripList();
@@ -164,5 +163,17 @@ namespace TestWeb.Controllers
         {
             return View();
         }
+
+        //[OnlyAdmin]
+        public IActionResult AggiungiUscita()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> AggiungiUscita()
+        //{
+           
+        //}
     }
 }

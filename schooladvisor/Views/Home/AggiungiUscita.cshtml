@@ -1,17 +1,25 @@
-﻿@model Trip
-@{
-    ViewData["Title"] = "Commenta Uscita";
+﻿@{
+    ViewData["Title"] = "Aggiungi Uscita";
+    Trip newTrip = new Trip();
 }
 
 <style>
+    #myDropZone {
+        border: 3px dashed #ccc;
+        border-radius: 20px;
+        background-color: #f9f9f9;
+        min-height: 200px;
+        padding: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #666;
 
-    img {
-        width: 100%;        
-        border-radius: 12px;
-        height: 400px;
-        object-fit: cover;
-    }   
-
+        transition: border-color 0.3s ease-in-out;
+        background-color: rgba(181, 181, 172, 0.15);
+    }
+    #myDropZone:hover {
+        border-color: #aaa; 
+    }
     .container{
         max-width: 70vw;
 
@@ -19,36 +27,14 @@
 
         margin-top: 5vh;
     }
-
-    .card {
-
-          background-color: white;
-
-          border: 1px solid #bacdd8;
-
-          padding: 8px;
-
-          border-radius: 12px;
-          margin-bottom: 5vh;
+    #inputFieldsContainer{
+        display: flex;
+        flex-wrap: warp;
+        justify-content: space-between;
     }
-
-    .name {
-      font-size: 24px;
-      font-weight: 600;
-
-      margin-top: 16px;
+    #inputFieldsContainer input{
+        min-width: 200px;
     }
-
-    p {
-      font-size: 14px;
-      color: #7f8c9b;
-      line-height: 150%;
-    }
-
-    .card__details {
-      padding: 16px 8px 8px 8px;
-    }
-
     button {
       border: none;
       padding: 12px 24px;
@@ -63,114 +49,50 @@
 
       cursor: pointer;
     }
-    .comment{
-        width: 100%;
-        min-height: 100px;
-        border: 1px solid #ccc;
-        border-radius: 12px;
-        resize: none;
-        font-size: 16px;
-    }
-    .commentArea{
-        margin-bottom:5vh;
-    }
-    /*rating*/
-    .rating {
-      display: inline-block;
-    }
 
-    .rating input {
-      display: none;
-    }
-
-    .rating label {
-      float: right;
-      color: #ddd;
-    }
-
-    .rating label:before {
-      content: '\2605';
-      font-size: 36px;
-    }
-
-    .rating input:checked ~ label {
-      color: #f90;
-    }
-
-    .rating:not(:checked) > label:hover,
-    .rating:not(:checked) > label:hover ~ label {
-      color: #f90;
-      cursor: pointer;
-    }
-
-    .rating input:checked + label:hover,
-    .rating input:checked ~ label:hover,
-    .rating label:hover ~ input:checked ~ label,
-    .rating input:checked ~ label:hover ~ label {
-      color: #ff0;
-      cursor: pointer;
-    }
-
-    
 </style>
 
-
 <h1>@ViewData["Title"]</h1>
+
 <div class="container">
-     <div class="card">
-        <img src="@Model.image">
-        <div class="card__details">
-             <div class="name">@Model.tripName</div>
-             <p>@Model.tripDescription</p>
+    <form asp-controller="Home" asp-action="AggiungiUscita" id="addTripForm" method="post">
+
+        <div id = "inputFieldsContainer">
+             <div class="form-group">
+                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" required/>
+             </div>
+             <div class="form-group">
+                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" required/>
+             </div>
+             <div class="form-group">
+                <input type="text" id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione" required/>
+             </div>
         </div>
-    </div>
-    <form id="submitComment" asp-controller="Home" asp-action="CommentaUscita" method="post">
+        <br />
 
-        @*campi nascosti per trasmissione dati*@
-        <input type="hidden" name="email" value="@ViewData["email"]" />
-        <input type="hidden" name="selectedTripId" value="@Model.tripID" />
-        <input type="hidden" id="ratingValue" name="ratingValue" value="" />
-        
-
-
-        <div class=commentArea>
-
-            <div class="rating">
-                  <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
-                  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
-                  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
-                  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
-                  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-            </div>
-
-
-            <div class="commentBox">
-                <textarea name="Comment" class="comment" placeholder="Inserisci commento" rows="5" cols="40" data-val-required="The Description field is required." 
-                     data-val-maxlength-max="5000" data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'." 
-                     data-val="true"></textarea>
-                <button type="submit">Pubblica commento</button>
-            </div>
-        </div>
+        <div class="dropzone" id="myDropZone"></div>
+        <br />
+        <button type="submit">Invia</button>
     </form>
-</div>  
+</div>
 
 
+<script src="~/lib/dropzone/dropzone.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const ratingStars = document.querySelectorAll('.rating input');
-        const publishButton = document.querySelector('#publishButton');
-        const ratingValueField = document.querySelector('#ratingValue');
+    Dropzone.options.myDropZone = {
+        paramName: "file", 
+        uploadMultiple : "false",
+        maxFiles : 1,
+        maxFilesize: 10, // Massima dimensione del file in MB
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+        addRemoveLinks: true, 
+        dictDefaultMessage: "Trascina il file o fai clic per selezionarlo",
+        url: "/fake-upload-url", // URL fake. Di default la libreria gestisce l'upload, ma in questo caso utilizziamo il controller
 
-        let selectedRating = null;
-
-        ratingStars.forEach(star => {
-            star.addEventListener('click', function() {
-                selectedRating = this.value;
+        init: function () {
+            this.on("success", function (file, response) {
+                // Azioni da eseguire dopo il caricamento del file
             });
-        });
-
-        publishButton.addEventListener('click', function() {
-            ratingValueField.value = selectedRating;
-        });
-    });
+        }
+    };
 </script>
