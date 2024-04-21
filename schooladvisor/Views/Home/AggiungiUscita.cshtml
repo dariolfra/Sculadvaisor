@@ -55,20 +55,22 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container">
-    <form asp-controller="Home" asp-action="AggiungiUscita" id="addTripForm" method="post">
+    <form asp-controller = "Home" asp-action="AggiungiUscita" id="addTripForm" method="post" enctype="multipart/form-data">
 
         <div id = "inputFieldsContainer">
              <div class="form-group">
-                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" required/>
+                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" @*required*@/>
              </div>
              <div class="form-group">
-                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" required/>
+                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" @*required*@/>
              </div>
              <div class="form-group">
-                <input type="text" id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione" required/>
+                <input type="text" id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione" @*required*@/>
              </div>
         </div>
         <br />
+
+        <input type="text" id="file" name="file" hidden/>
 
         <div class="dropzone" id="myDropZone"></div>
         <br />
@@ -80,19 +82,24 @@
 <script src="~/lib/dropzone/dropzone.min.js"></script>
 <script>
     Dropzone.options.myDropZone = {
-        paramName: "file", 
-        uploadMultiple : "false",
-        maxFiles : 1,
+        paramName: "file",
+        uploadMultiple: false,
+        maxFiles: 1,
         maxFilesize: 10, // Massima dimensione del file in MB
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        addRemoveLinks: true, 
+        addRemoveLinks: true,
         dictDefaultMessage: "Trascina il file o fai clic per selezionarlo",
-        url:"AggiungiUscita", // URL fake. Di default la libreria gestisce l'upload, ma in questo caso utilizziamo il controller
+        url: "/Home/AggiungiUscita", // Aggiorna l'URL per puntare all'endpoint di caricamento del file
 
         init: function () {
             this.on("success", function (file, response) {
-                // Azioni da eseguire dopo il caricamento del file
+                // Imposta il valore dell'elemento input file con il nome del file caricato
+                document.getElementById('file').value = file.name;
+
+                // Azioni da eseguire dopo il caricamento del file, se necessario
+                console.log("File caricato con successo: ", response.filePath);
             });
         }
     };
+
 </script>

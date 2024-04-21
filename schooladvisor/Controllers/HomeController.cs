@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySqlX.XDevAPI;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 //parcheggio tilde che porcaccio iddio non ce l'ho sulla tastiera
 // ----->  ~  <-----
@@ -23,13 +24,16 @@ namespace TestWeb.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         private readonly ISession _session;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private GestioneDati gestione;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _configuration = configuration;
             _session = contextAccessor.HttpContext.Session;
+            _webHostEnvironment = webHostEnvironment;
+
             gestione = new GestioneDati(_configuration);
 
             contextAccessor.HttpContext.Items["utente"] = _session.GetString("utente");
@@ -170,10 +174,10 @@ namespace TestWeb.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> AggiungiUscita()
-        //{
-           
-        //}
+        [HttpPost]
+        public async Task<IActionResult> AggiungiUscita(string file)
+        {
+            return Ok("nome file: "+file);
+        }
     }
 }
