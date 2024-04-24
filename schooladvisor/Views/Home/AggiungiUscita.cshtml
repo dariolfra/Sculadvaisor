@@ -82,8 +82,6 @@
 <script src="~/lib/dropzone/dropzone.min.js"></script>
 <script>
 
-   
-
     Dropzone.options.myDropZone = {
         paramName: "file",
         uploadMultiple: false,
@@ -102,14 +100,14 @@
 
     function uploadFiles(event) {
         event.preventDefault();
-        const fileInput = document.getElementById("myDropZone");
+        const fileInput = document.getElementById("file");
         const selectedFiles = fileInput.files;
         const formData = new FormData();
-        for (let i = 0; i < selectedFiles.length(); i++) {
+        for (let i = 0; i < selectedFiles.length; i++) {
             formData.append("files[]", selectedFiles[i]);
         }
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "~/img", true);
+        xhr.open("POST", "/Home/AggiungiUscita", true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -125,6 +123,7 @@
         };
         xhr.send(formData);
     }
+
 
     const uploadButton = document.getElementById("submit");
     uploadButton.addEventListener("click", uploadFiles);

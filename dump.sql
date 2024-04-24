@@ -12,11 +12,64 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- L’esportazione dei dati non era selezionata.
 
--- L’esportazione dei dati non era selezionata.
+-- Dump della struttura del database schooladvisor
+CREATE DATABASE IF NOT EXISTS `schooladvisor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `schooladvisor`;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump della struttura di tabella schooladvisor.reviews
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `reviewID` int(11) NOT NULL AUTO_INCREMENT,
+  `tripID` int(11) DEFAULT NULL,
+  `userID` varchar(50) DEFAULT NULL,
+  `reviewState` varchar(50) DEFAULT NULL,
+  `reviewRating` int(11) DEFAULT NULL,
+  `reviewComment` text DEFAULT NULL,
+  PRIMARY KEY (`reviewID`),
+  KEY `FK__trips` (`tripID`),
+  KEY `FK_reviews_users` (`userID`),
+  CONSTRAINT `FK__trips` FOREIGN KEY (`tripID`) REFERENCES `trips` (`tripID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_reviews_users` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dump dei dati della tabella schooladvisor.reviews: ~2 rows (circa)
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` (`reviewID`, `tripID`, `userID`, `reviewState`, `reviewRating`, `reviewComment`) VALUES
+	(15, 1, 'admin@admin.it', 'approved', 5, 'approvo l\'uscita, mi è piaciuto vedere uomini muscolosi che combattono'),
+	(16, 1, 'admin@admin.it', 'approved', 3, 'il gattino sembra tato');
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+
+-- Dump della struttura di tabella schooladvisor.trips
+CREATE TABLE IF NOT EXISTS `trips` (
+  `tripID` int(11) NOT NULL AUTO_INCREMENT,
+  `tripName` varchar(50) DEFAULT NULL,
+  `tripDate` datetime DEFAULT NULL,
+  `tripDescription` text DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`tripID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dump dei dati della tabella schooladvisor.trips: ~3 rows (circa)
+/*!40000 ALTER TABLE `trips` DISABLE KEYS */;
+INSERT INTO `trips` (`tripID`, `tripName`, `tripDate`, `tripDescription`, `image`) VALUES
+	(1, 'uscita teatro Treviso', '2024-03-25 13:00:00', 'visione teatrale di JOJO parte 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porta posuere justo a scelerisque. Suspendisse eleifend sit amet turpis sit amet faucibus. Donec vel interdum sapien. Sed sodales placerat magna et elementum. Nulla nec tincidunt lorem. Fusce tempor justo eget maximus viverra. Nunc vitae urna imperdiet, pretium dui quis, tristique neque.', '/img/goofyCat.jpeg'),
+	(2, 'mostra d\'arte: "culi sudati"', '2024-04-20 10:00:00', 'galleria contemporanea con quadri animati Phasellus eget maximus libero, vel auctor arcu. Suspendisse potenti. Ut in luctus enim. Nullam vel aliquam nulla. Phasellus placerat facilisis felis, non facilisis metus fringilla vitae. Nulla eu arcu vel arcu fermentum convallis eget at quam. Curabitur eleifend vitae tortor id maximus. Mauris auctor purus vel nibh tempor, ut rutrum velit lobortis. Sed nec orci sed nisl tristique interdum. Quisque sed quam mauris.', '/img/foglioProtocollo.gif'),
+	(3, 'uscita al cinema esperia ', '2023-03-28 09:15:00', 'visione film "eepy cat" Morbi et risus mi. Curabitur fermentum massa et magna finibus, sit amet imperdiet elit luctus. Aenean aliquam urna ac quam dictum cursus. Sed eget erat urna. Aenean fermentum nisi nec urna gravida ultrices. Etiam congue magna augue, a placerat nulla egestas ut. In malesuada iaculis elit, pretium sagittis tortor gravida vel. Aliquam pellentesque vulputate nunc at congue. Maecenas vel turpis iaculis mauris rhoncus venenatis ut eu nulla.', '/img/pipone.jpeg');
+/*!40000 ALTER TABLE `trips` ENABLE KEYS */;
+
+-- Dump della struttura di tabella schooladvisor.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `userID` varchar(50) NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dump dei dati della tabella schooladvisor.users: ~1 rows (circa)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`userID`, `username`, `password`) VALUES
+	('admin@admin.it', 'admin', 'admin123');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

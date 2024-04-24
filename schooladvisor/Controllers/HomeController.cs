@@ -175,9 +175,18 @@ namespace TestWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AggiungiUscita(string file)
+        public async Task<IActionResult> AggiungiUscita(IFormFile file)
         {
-            return Ok("nome file: "+file);
+            if (file != null && file.Length > 0)
+            {
+                // Esempio di salvataggio del file su disco
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), file.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            return Ok();
         }
     }
 }
