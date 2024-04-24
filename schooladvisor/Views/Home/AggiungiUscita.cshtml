@@ -70,17 +70,20 @@
         </div>
         <br />
 
-        <input type="text" id="file" name="file" hidden/>
+        <input type="file" id="file" name="file" hidden/>
 
         <div class="dropzone" id="myDropZone"></div>
         <br />
-        <button type="submit">Invia</button>
+        <button type="submit" id="submit">Invia</button>
     </form>
 </div>
 
 
 <script src="~/lib/dropzone/dropzone.min.js"></script>
 <script>
+
+   
+
     Dropzone.options.myDropZone = {
         paramName: "file",
         uploadMultiple: false,
@@ -93,13 +96,37 @@
 
         init: function () {
             this.on("success", function (file, response) {
-                // Imposta il valore dell'elemento input file con il nome del file caricato
-                document.getElementById('file').value = file.name;
-
-                // Azioni da eseguire dopo il caricamento del file, se necessario
-                console.log("File caricato con successo: ", response.filePath);
             });
         }
     };
+
+    function uploadFiles(event) {
+        event.preventDefault();
+        const fileInput = document.getElementById("myDropZone");
+        const selectedFiles = fileInput.files;
+        const formData = new FormData();
+        for (let i = 0; i < selectedFiles.length(); i++) {
+            formData.append("files[]", selectedFiles[i]);
+        }
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "~/img", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Handle successful response from the server
+                    console.log('Files uploaded successfully!');
+                    alert("Files uploaded successfully!");
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to upload files.');
+                    alert("Error occurred during file upload. Please try again.");
+                }
+            }
+        };
+        xhr.send(formData);
+    }
+
+    const uploadButton = document.getElementById("submit");
+    uploadButton.addEventListener("click", uploadFiles);
 
 </script>

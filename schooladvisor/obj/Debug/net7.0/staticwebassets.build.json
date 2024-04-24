@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g7PUSTx71grS0/Lc05+wyPmgN89ZbBHtZpUvX/b4tnY=",
+  "Hash": "tFi/ReVgv46WvY7UzaVTfCr9hNdaOz1fjQqc9ZPyFYk=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -100,23 +100,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\AccessDenied.png"
-    },
-    {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\f385d1c3-96fd-4dde-a28a-5ba3856fee77_PORCODIO.jpeg",
-      "SourceId": "schooladvisor",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
-      "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/f385d1c3-96fd-4dde-a28a-5ba3856fee77_PORCODIO.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\f385d1c3-96fd-4dde-a28a-5ba3856fee77_PORCODIO.jpeg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\foglioProtocollo.gif",
