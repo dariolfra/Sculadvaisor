@@ -1,3 +1,5 @@
+using schooladvisor.TelegramBot;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,11 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.IsEssential = true;
 });
+
+builder.Services.AddControllersWithViews();
+TelegramBot bot = new TelegramBot();
+builder.Services.AddHostedService(service => bot);
+builder.Services.AddScoped<TelegramBot>(_ => bot);
 
 var app = builder.Build();
 

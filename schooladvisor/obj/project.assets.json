@@ -569,6 +569,22 @@
           }
         }
       },
+      "Telegram.Bot/19.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/net6.0/Telegram.Bot.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Telegram.Bot.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "ZstdSharp.Port/0.7.1": {
         "type": "package",
         "compile": {
@@ -1870,6 +1886,24 @@
         "version.txt"
       ]
     },
+    "Telegram.Bot/19.0.0": {
+      "sha512": "Q16IOitgjGoaJOuqgKQy0FeF+hr/ncmlX2esrhCC7aiyhSX7roYEriWaGAHkQZR8QzbImjFfl4eQh2IxcnOrPg==",
+      "type": "package",
+      "path": "telegram.bot/19.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Telegram.Bot.dll",
+        "lib/net6.0/Telegram.Bot.pdb",
+        "lib/net6.0/Telegram.Bot.xml",
+        "lib/netstandard2.0/Telegram.Bot.dll",
+        "lib/netstandard2.0/Telegram.Bot.pdb",
+        "lib/netstandard2.0/Telegram.Bot.xml",
+        "package-icon.png",
+        "telegram.bot.19.0.0.nupkg.sha512",
+        "telegram.bot.nuspec"
+      ]
+    },
     "ZstdSharp.Port/0.7.1": {
       "sha512": "Idgg+mJEyAujqDPzA3APy9dNoyw0YQcNA65GgYjktDRtJ+nvx/hv+J+m6Eax3JJMGEYGy04oc5YNP6ZvQ3Y1vQ==",
       "type": "package",
@@ -1893,23 +1927,24 @@
     "net7.0": [
       "Dapper >= 2.1.35",
       "FirebaseAuthentication.net >= 4.1.0",
-      "MySql.Data >= 8.3.0"
+      "MySql.Data >= 8.3.0",
+      "Telegram.Bot >= 19.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thoma\\.nuget\\packages\\": {}
+    "C:\\Users\\Francesco\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
+      "projectUniqueName": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
       "projectName": "schooladvisor",
-      "projectPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
-      "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\obj\\",
+      "projectPath": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
+      "packagesPath": "C:\\Users\\Francesco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Francesco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1946,6 +1981,10 @@
           "MySql.Data": {
             "target": "Package",
             "version": "[8.3.0, )"
+          },
+          "Telegram.Bot": {
+            "target": "Package",
+            "version": "[19.0.0, )"
           }
         },
         "imports": [
@@ -1967,7 +2006,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

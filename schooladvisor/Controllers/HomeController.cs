@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySqlX.XDevAPI;
 using Microsoft.AspNetCore.Http;
+using schooladvisor.TelegramBot;
 
 namespace TestWeb.Controllers
 {
@@ -21,13 +22,17 @@ namespace TestWeb.Controllers
         private readonly IConfiguration _configuration;
         private readonly ISession _session;
         private GestioneDati gestione;
+        private TelegramBot bot;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, TelegramBot b)
         {
             _logger = logger;
             _configuration = configuration;
             _session = contextAccessor.HttpContext.Session;
             gestione = new GestioneDati(_configuration);
+
+            bot = b;
+            bot.GD = gestione;
 
             contextAccessor.HttpContext.Items["utente"] = _session.GetString("utente");
         }
@@ -51,50 +56,51 @@ namespace TestWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> CommentaUscita(string comment,string email,string selectedTripId,string rating)
         {
-            gestione.RegisterComment(comment,email,selectedTripId,rating);
+            await bot.SendMessage(new Review() { reviewComment = comment, reviewRating = Convert.ToInt32(rating), reviewState = "sent", tripID = Convert.ToInt32(selectedTripId), userID = email });
             return View("ConfermaCommento");
         }
-        public async Task<IActionResult> ProvaTelegram()
-        {
-            HttpClient client = new HttpClient();
-            string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
-            string chatID = "521459468";
-            string text = "*ODIO I FROCI*";
 
-            Uri uri = new Uri(@"https://api.telegram.org/bot7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw/sendMessage?chat_id=521459468&parse_mode=MarkdownV2&text="+text);
+        //public async Task<IActionResult> ProvaTelegram()
+        //{
+        //    HttpClient client = new HttpClient();
+        //    string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
+        //    string chatID = "521459468";
+        //    string text = "*ODIO I FROCI*";
 
-            var response = await client.GetAsync(uri);
-            ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
-            return View("Index");
-        }
-        public async Task<IActionResult> ProvaTelegramConPulsanti()
-        {
-            HttpClient client = new HttpClient();
-            string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
-            string chatID = "521459468";
-            string text = "*ODIO I FROCI*";
+        //    Uri uri = new Uri(@"https://api.telegram.org/bot7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw/sendMessage?chat_id=521459468&parse_mode=MarkdownV2&text="+text);
 
-            // Creazione della tastiera inline
-            var keyboard = new
-            {
-                inline_keyboard = new[]
-                {
-                    new[]
-                    {
-                        new { text = "Conferma✅", callback_data = "approved" },
-                        new { text = "Rifiuto❌", callback_data = "rejected" }
-                    }
-                }
-            };
+        //    var response = await client.GetAsync(uri);
+        //    ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
+        //    return View("Index");
+        //}
+        //public async Task<IActionResult> ProvaTelegramConPulsanti()
+        //{
+        //    HttpClient client = new HttpClient();
+        //    string apikey = "7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw";
+        //    string chatID = "521459468";
+        //    string text = "*ODIO I FROCI*";
 
-            var keyboardJson = JsonConvert.SerializeObject(keyboard);
+        //    // Creazione della tastiera inline
+        //    var keyboard = new
+        //    {
+        //        inline_keyboard = new[]
+        //        {
+        //            new[]
+        //            {
+        //                new { text = "Conferma✅", callback_data = "approved" },
+        //                new { text = "Rifiuto❌", callback_data = "rejected" }
+        //            }
+        //        }
+        //    };
 
-            Uri uri = new Uri($"https://api.telegram.org/bot{apikey}/sendMessage?chat_id={chatID}&parse_mode=MarkdownV2&text={text}&reply_markup={keyboardJson}");
+        //    var keyboardJson = JsonConvert.SerializeObject(keyboard);
 
-            var response = await client.GetAsync(uri);
-            ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
-            return View("ConfermaCommento");
-        }
+        //    Uri uri = new Uri($"https://api.telegram.org/bot{apikey}/sendMessage?chat_id={chatID}&parse_mode=MarkdownV2&text={text}&reply_markup={keyboardJson}");
+
+        //    var response = await client.GetAsync(uri);
+        //    ViewData["esito"] = "Successo = " + response.IsSuccessStatusCode;
+        //    return View("ConfermaCommento");
+        //}
 
 
         public IActionResult LoginFirebase()
