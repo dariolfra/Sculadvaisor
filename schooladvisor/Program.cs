@@ -1,5 +1,6 @@
 using schooladvisor.Filters;
 
+using schooladvisor.TelegramBot;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddScoped<OnlyAdmin>();
+builder.Services.AddControllersWithViews();
+TelegramBot bot = new TelegramBot();
+builder.Services.AddHostedService(service => bot);
+builder.Services.AddScoped<TelegramBot>(_ => bot);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
