@@ -4,7 +4,7 @@
     {       
         public int tripID { get; set; }
         public string tripName { get; set; }
-        public string tripDate { get; set; }
+        public DateTime tripDate { get; set; }
         public string tripDescription { get; set; }
         public string image { get; set; }
     }

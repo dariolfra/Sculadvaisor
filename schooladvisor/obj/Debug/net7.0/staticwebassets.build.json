@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tFi/ReVgv46WvY7UzaVTfCr9hNdaOz1fjQqc9ZPyFYk=",
+  "Hash": "dW6L3B2YvxrCHsPxa8Dtl0RxMZPtRllrslVkNYq27Ik=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\pipone.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\sapo.jpg",
+      "SourceId": "schooladvisor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
+      "BasePath": "_content/schooladvisor",
+      "RelativePath": "img/sapo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\sapo.jpg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\js\\site.js",

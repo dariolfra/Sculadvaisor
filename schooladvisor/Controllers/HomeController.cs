@@ -24,15 +24,15 @@ namespace TestWeb.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         private readonly ISession _session;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private GestioneDati gestione;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, IWebHostEnvironment webHostEnvironment)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _configuration = configuration;
             _session = contextAccessor.HttpContext.Session;
-            _webHostEnvironment = webHostEnvironment;
+            _hostingEnvironment = hostingEnvironment;
 
             gestione = new GestioneDati(_configuration);
 
@@ -173,20 +173,38 @@ namespace TestWeb.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
-        public async Task<IActionResult> AggiungiUscita(IFormFile file)
+        public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
         {
             if (file != null && file.Length > 0)
             {
-                // Esempio di salvataggio del file su disco
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), file.FileName);
+                var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+
+                if (!Directory.Exists(uploadDir))
+                {
+                    Directory.CreateDirectory(uploadDir);
+                }
+
+                var filePath = Path.Combine(uploadDir, file.FileName);
+
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
+
+                Trip t = new Trip() { image = filePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
+                gestione.AddTrip(t);
             }
+
             return Ok();
+        }
+
+
+        [HttpPost]
+        public void FakeUrl()
+        {
+            // dropzone richiede un url, ma è già gestito dall'homecontroller
         }
     }
 }

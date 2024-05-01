@@ -13,119 +13,156 @@
         text-align: center;
         font-size: 18px;
         color: #666;
-
         transition: border-color 0.3s ease-in-out;
         background-color: rgba(181, 181, 172, 0.15);
     }
-    #myDropZone:hover {
-        border-color: #aaa; 
-    }
-    .container{
+
+        #myDropZone:hover {
+            border-color: #aaa;
+            cursor: pointer;
+        }
+
+    .container {
         max-width: 70vw;
-
         margin: 0 auto;
-
         margin-top: 5vh;
     }
-    #inputFieldsContainer{
+
+    #inputFieldsContainer {
         display: flex;
-        flex-wrap: warp;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
-    #inputFieldsContainer input{
-        min-width: 200px;
-    }
+
+        #inputFieldsContainer input {
+            min-width: 200px;
+        }
+
     button {
-      border: none;
-      padding: 12px 24px;
-      border-radius: 50px;
-
-      font-weight: 600;
-      color: #0077ff;
-      background-color: #e0efff;
-
-      margin: 0 auto;
-      display: block;
-
-      cursor: pointer;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        color: #0077ff;
+        background-color: #e0efff;
+        margin: 0 auto;
+        display: block;
+        cursor: pointer;
     }
 
-</style>
+    .file-info-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
+        .file-info-container img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .file-info-container div {
+            margin-top: 5px;
+        }
+
+    #tripDescription{
+        min-height:100px;
+        resize: none;
+    }
+</style>
+    
 <h1>@ViewData["Title"]</h1>
 
 <div class="container">
-    <form asp-controller = "Home" asp-action="AggiungiUscita" id="addTripForm" method="post" enctype="multipart/form-data">
-
-        <div id = "inputFieldsContainer">
-             <div class="form-group">
-                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" @*required*@/>
-             </div>
-             <div class="form-group">
-                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" @*required*@/>
-             </div>
-             <div class="form-group">
-                <input type="text" id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione" @*required*@/>
-             </div>
+    <form asp-controller="Home" asp-action="AggiungiUscita" id="addTripForm" method="post" enctype="multipart/form-data">
+        <div id="inputFieldsContainer">
+            <div class="form-group">
+                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" />
+            </div>
+            <div class="form-group">
+                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" />
+            </div>
         </div>
         <br />
-
-        <input type="file" id="file" name="file" hidden/>
-
-        <div class="dropzone" id="myDropZone"></div>
+        <div class="form-group">
+            <textarea id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione"></textarea>
+        </div>
+        <br />
+        <input type="file" id="file" name="file" hidden />
+        <div class="dropzone" id="myDropZone"
+             ondragover="handleDragOver(event)"
+             ondragenter="handleDragEnter(event)"
+             ondragleave="handleDragLeave(event)"
+             ondrop="handleDrop(event)"
+             accept="image/*">
+            Trascina il file o fai clic per selezionarlo (solo immagini)
+        </div>
         <br />
         <button type="submit" id="submit">Invia</button>
     </form>
 </div>
 
-
-<script src="~/lib/dropzone/dropzone.min.js"></script>
 <script>
-
-    Dropzone.options.myDropZone = {
-        paramName: "file",
-        uploadMultiple: false,
-        maxFiles: 1,
-        maxFilesize: 10, // Massima dimensione del file in MB
-        acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        addRemoveLinks: true,
-        dictDefaultMessage: "Trascina il file o fai clic per selezionarlo",
-        url: "/Home/AggiungiUscita", // Aggiorna l'URL per puntare all'endpoint di caricamento del file
-
-        init: function () {
-            this.on("success", function (file, response) {
-            });
-        }
-    };
-
-    function uploadFiles(event) {
+    function handleDragOver(event) {
         event.preventDefault();
-        const fileInput = document.getElementById("file");
-        const selectedFiles = fileInput.files;
-        const formData = new FormData();
-        for (let i = 0; i < selectedFiles.length; i++) {
-            formData.append("files[]", selectedFiles[i]);
-        }
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/Home/AggiungiUscita", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // Handle successful response from the server
-                    console.log('Files uploaded successfully!');
-                    alert("Files uploaded successfully!");
-                } else {
-                    // Handle error response from the server
-                    console.error('Failed to upload files.');
-                    alert("Error occurred during file upload. Please try again.");
-                }
-            }
-        };
-        xhr.send(formData);
+        event.dataTransfer.dropEffect = "copy";
     }
 
+    function handleDragEnter(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.add("dragover");
+    }
 
-    const uploadButton = document.getElementById("submit");
-    uploadButton.addEventListener("click", uploadFiles);
+    function handleDragLeave(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.remove("dragover");
+    }
 
+    function handleDrop(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.remove("dragover");
+        const files = event.dataTransfer.files;
+        const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+
+        // Crea un oggetto FileList dai file
+        const fileList = new DataTransfer();
+        imageFiles.forEach(file => {
+            fileList.items.add(file);
+        });
+
+        // Imposta i file selezionati nel campo di input file
+        const fileInput = document.getElementById("file");
+        fileInput.files = fileList.files;
+
+        // Mostra le informazioni sui file
+        showFiles(imageFiles);
+    }
+
+    function showFiles(files) {
+        const dropZone = document.getElementById("myDropZone");
+        dropZone.innerHTML = "";
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileName = file.name;
+            const fileSize = file.size;
+
+            const fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                const fileImg = document.createElement("img");
+                fileImg.src = event.target.result;
+                fileImg.width = 100;
+
+                const fileInfoContainer = document.createElement("div");
+                fileInfoContainer.classList.add("file-info-container");
+
+                fileInfoContainer.appendChild(fileImg);
+
+                const fileInfo = document.createElement("div");
+                fileInfo.textContent = `${fileName} (${fileSize} bytes)`;
+                fileInfoContainer.appendChild(fileInfo);
+
+                dropZone.appendChild(fileInfoContainer);
+            }
+            fileReader.readAsDataURL(file);
+        }
+    }
 </script>
