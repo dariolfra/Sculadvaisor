@@ -21,14 +21,17 @@ namespace TestWeb.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         private readonly ISession _session;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private GestioneDati gestione;
         private TelegramBot bot;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, TelegramBot b)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor, IWebHostEnvironment hostingEnvironment, TelegramBot b)
         {
             _logger = logger;
             _configuration = configuration;
             _session = contextAccessor.HttpContext.Session;
+            _hostingEnvironment = hostingEnvironment;
+
             gestione = new GestioneDati(_configuration);
 
             bot = b;
@@ -151,6 +154,51 @@ namespace TestWeb.Controllers
                 ViewData["errore"] = "Credenziali errate!";
                 return View(new System.Net.NetworkCredential());
             }
+        }
+        public IActionResult VisualizzaCommenti(string selectedTripId)
+        {
+            var trip = gestione.GetTrip(selectedTripId);
+            var approvedComments = gestione.GetApprovedComments(selectedTripId);
+
+            ViewData["ApprovedComments"] = approvedComments;
+
+            return View(trip);
+        }
+
+        public IActionResult AccessoNegato()
+        {
+            return View();
+        }
+
+        //[OnlyAdmin]
+        public IActionResult AggiungiUscita()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+
+                if (!Directory.Exists(uploadDir))
+                {
+                    Directory.CreateDirectory(uploadDir);
+                }
+
+                var filePath = Path.Combine(uploadDir, file.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                Trip t = new Trip() { image = filePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
+                gestione.AddTrip(t);
+            }
+
+            return Ok();
         }
     }
 }

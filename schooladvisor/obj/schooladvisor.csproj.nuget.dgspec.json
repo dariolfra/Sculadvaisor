@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {}
+    "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {
+    "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
+        "projectUniqueName": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
         "projectName": "schooladvisor",
-        "projectPath": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
-        "packagesPath": "C:\\Users\\Francesco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\obj\\",
+        "projectPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
+        "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Francesco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -173,3 +173,4 @@ C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net7.0\schooladvisor.genruntimeconfig.cache
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net7.0\ref\schooladvisor.dll
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\bin\Debug\net7.0\libman.json
+C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\bin\Debug\net7.0\Telegram.Bot.dll
