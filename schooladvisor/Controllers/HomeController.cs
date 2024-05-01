@@ -199,12 +199,12 @@ namespace TestWeb.Controllers
 
             return Ok();
         }
-
-
-        [HttpPost]
-        public void FakeUrl()
+        public IActionResult RisultatiRicerca(string search)
         {
-            // dropzone richiede un url, ma è già gestito dall'homecontroller
+            List<Trip> searchResults = gestione.SearchTrips(search);
+            ViewBag.SearchText = search;
+            return View(searchResults);
         }
+
     }
 }

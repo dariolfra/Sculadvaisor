@@ -48,5 +48,13 @@ namespace schooladvisor.Models
             string sql = "INSERT INTO trips (tripName,tripDate,tripDescription,image) VALUES (@name,@date,@descr,@img)";
             con.Execute(sql, new { name = trip.tripName, date = trip.tripDate, descr = trip.tripDescription, img = trip.image });
         }
+
+        public List<Trip> SearchTrips(string search)
+        {
+            using var con = new MySqlConnection(s);
+            string sql = "SELECT * FROM trips WHERE tripName LIKE CONCAT('%', @searchText, '%') OR tripDate LIKE CONCAT('%', @searchText, '%') OR tripDescription LIKE CONCAT('%', @searchText, '%')";
+            return con.Query<Trip>(sql, new { searchText = search }).ToList();
+        }
+
     }
 }

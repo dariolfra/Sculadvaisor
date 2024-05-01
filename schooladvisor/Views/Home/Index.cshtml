@@ -13,11 +13,17 @@
     .search-container {
         display: flex;
         margin-bottom: 20px;
+        width:100%;
     }
 
     #searchInput{
         border-radius: 20px;
         border-color: black;
+    }
+
+    #searchForm {
+        flex: 1; /*occupa tutto lo spazio*/
+        display: flex;
     }
  
     button {
@@ -36,8 +42,10 @@
 <div class="container">
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cerca..." class="form-control">
-        <button onclick="search()"><img src="~/img/MagnifyingGlass.png" height="23px" width="23px" /></button>
+        <form id="searchForm" asp-controller="Home" asp-action="RisultatiRicerca" method="get">
+            <input type="text" id="searchInput" name="search" placeholder="Cerca..." class="form-control">
+            <button type="submit"><img src="~/img/MagnifyingGlass.png" height="23px" width="23px" /></button>
+        </form>
     </div>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="hover">
@@ -53,8 +61,8 @@
                 var showClass = (i == 0 ? "active" : "");
                 var path = imagePath[i];
                     <div class="item @showClass">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
+                        <div class="carousel-content">  
+                            <div style="margin: 0 auto">    
                                 <p>
                                     <img src="@path" />                                    
                                 </p>
