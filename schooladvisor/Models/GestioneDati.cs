@@ -56,5 +56,11 @@ namespace schooladvisor.Models
             return con.Query<Trip>(sql, new { searchText = search }).ToList();
         }
 
+        public List<Trip> GetLastTrips() //ottiene le 3 uscite piu recenti
+        {
+            using var con = new MySqlConnection(s);
+            string sql = "SELECT * FROM trips ORDER BY trips.tripDate DESC LIMIT 3";
+            return con.Query<Trip>(sql).ToList();
+        }
     }
 }

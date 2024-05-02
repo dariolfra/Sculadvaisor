@@ -41,7 +41,7 @@ namespace TestWeb.Controllers
 
         public IActionResult Index()
         {
-            var trips = gestione.GetTripList();
+            var trips = gestione.GetLastTrips();
             return View(trips);
         }
 
@@ -144,6 +144,7 @@ namespace TestWeb.Controllers
                 }
                 else
                 {
+                    var auth = User.Identity.IsAuthenticated;
                     return RedirectToAction("Index");
                 }
             }

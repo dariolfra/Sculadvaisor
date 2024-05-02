@@ -108,6 +108,10 @@
         border-radius: 20px;
     }
 
+    .carousel-indicators {
+        top:100%;
+        position: absolute; /* Imposta la posizione assoluta rispetto al carousel */
+    }
 
 
 </style>
@@ -144,7 +148,7 @@
                 <div class="carousel-item @activeClass">
                     <img src="@trip.image" class="d-block w-100 img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>@trip.tripName</h5>
+                        <h5>@trip.tripName ㅤ @trip.tripDate.ToString("dd/MM/yyyy")</h5>
                         <p>@trip.tripDescription</p>
                     </div>
                 </div>
@@ -162,7 +166,10 @@
         </a>
 
     </div>
-
+    <br />
+    <br />
+    <br />
+    <br />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

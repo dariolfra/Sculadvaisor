@@ -34,8 +34,8 @@
           margin-top:10px;
           margin-bottom:10px;
     }
-
-    .name {
+    
+    .nameAndDate {
       font-size: 24px;
       font-weight: 600;
 
@@ -70,7 +70,11 @@
         display: flex; 
         justify-content: space-between; 
         margin-top: 10px; 
-}
+    }
+    #nameAndDate{
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 <div class="container">
     <h1>@ViewData["Title"]</h1>
@@ -81,10 +85,11 @@
           <img src="@trip.image">
 
           <div class="card__details">
-
-            <div class="name">@trip.tripName</div>
-
-            <p>@trip.tripDescription</p>
+              <div id="nameAndDate">
+                   <div class="nameAndDate">@trip.tripName</div>
+                   <div class="nameAndDate">@trip.tripDate.ToString("dd/MM/yyyy")</div>
+              </div>
+              <p>@trip.tripDescription</p>
           </div>
           <div class="buttonContainer">
               <button onclick="redirectLoginFirebase(@trip.tripID)">Lascia Recensione</button>
