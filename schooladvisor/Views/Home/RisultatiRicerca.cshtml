@@ -84,3 +84,16 @@ else
 {
     <p>Nessun risultato trovato per "@ViewBag.SearchText".</p>
 }
+
+
+<script>
+    function redirectLoginFirebase(tripID) {
+        //l'uscita selezionata viene salvata nella sessione corrente, in questo modo dopo il login è possibile commentare
+        sessionStorage.setItem('SelectedTripId', tripID);
+        window.location.href = "/Home/LoginFirebase"
+    }
+    function redirectVisualizzaCommenti(tripID) {
+        sessionStorage.setItem('SelectedTripId', tripID);
+        window.location.href = "/Home/VisualizzaCommenti?selectedTripId=" + tripID;
+    }
+</script>

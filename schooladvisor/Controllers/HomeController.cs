@@ -175,30 +175,6 @@ namespace TestWeb.Controllers
         }
         
         [HttpPost]
-        //public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
-        //{
-        //    if (file != null && file.Length > 0)
-        //    {
-        //        var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-
-        //        if (!Directory.Exists(uploadDir))
-        //        {
-        //            Directory.CreateDirectory(uploadDir);
-        //        }
-
-        //        var filePath = "/img/" + file.FileName;
-
-        //        using (var stream = new FileStream(filePath, FileMode.Create))
-        //        {
-        //            await file.CopyToAsync(stream);
-        //        }
-
-        //        Trip t = new Trip() { image = filePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
-        //        gestione.AddTrip(t);
-        //    }
-
-        //    return View("ConfermaAggiunta");
-        //}
         public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
         {
             if (file != null && file.Length > 0)

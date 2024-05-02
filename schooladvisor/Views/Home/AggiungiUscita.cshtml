@@ -48,6 +48,7 @@
         margin: 0 auto;
         display: block;
         cursor: pointer;
+        margin-bottom: 30px;
     }
 
     .file-info-container {
@@ -68,6 +69,12 @@
         min-height:100px;
         resize: none;
     }
+
+    #myDropZone.dragover {
+        border-color: #aaa; /* Cambia il colore del bordo quando trascini sopra */
+        background-color: #f0f0f0; /* Cambia il colore di sfondo durante il trascinamento */
+    }
+
 </style>
     
 <h1>@ViewData["Title"]</h1>
@@ -87,7 +94,7 @@
             <textarea id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione"></textarea>
         </div>
         <br />
-        <input type="file" id="file" name="file" hidden accept="image/*" />
+        <input type="file" id="file" name="file" accept="image/*" style="display: none;" />
         <div class="dropzone" id="myDropZone"
              ondragover="handleDragOver(event)"
              ondragenter="handleDragEnter(event)"
@@ -165,4 +172,17 @@
             fileReader.readAsDataURL(file);
         }
     }
+
+    function handleDropzoneClick() {
+        document.getElementById("file").click();
+        // Aggiungiamo la chiamata a showFiles dopo che l'utente ha selezionato i file
+        document.getElementById("file").addEventListener("change", function () {
+            const files = this.files;
+            showFiles(files);
+        });
+    }
+
+
+    document.getElementById("myDropZone").addEventListener("click", handleDropzoneClick);
+
 </script>
