@@ -175,6 +175,30 @@ namespace TestWeb.Controllers
         }
         
         [HttpPost]
+        //public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
+        //{
+        //    if (file != null && file.Length > 0)
+        //    {
+        //        var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+
+        //        if (!Directory.Exists(uploadDir))
+        //        {
+        //            Directory.CreateDirectory(uploadDir);
+        //        }
+
+        //        var filePath = "/img/" + file.FileName;
+
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await file.CopyToAsync(stream);
+        //        }
+
+        //        Trip t = new Trip() { image = filePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
+        //        gestione.AddTrip(t);
+        //    }
+
+        //    return View("ConfermaAggiunta");
+        //}
         public async Task<IActionResult> AggiungiUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription)
         {
             if (file != null && file.Length > 0)
@@ -186,25 +210,30 @@ namespace TestWeb.Controllers
                     Directory.CreateDirectory(uploadDir);
                 }
 
-                var filePath = Path.Combine(uploadDir, file.FileName);
+                // Genera un nome univoco per il file caricato
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                var filePath = Path.Combine(uploadDir, fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
 
-                Trip t = new Trip() { image = filePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
+                // Imposta il percorso relativo del file per il viaggio
+                var relativeFilePath = Path.Combine("/img", fileName);
+
+                Trip t = new Trip() { image = relativeFilePath, tripDate = tripDate, tripDescription = tripDescription, tripName = tripName };
                 gestione.AddTrip(t);
             }
 
-            return Ok();
+            return View("ConfermaAggiunta");
         }
+
         public IActionResult RisultatiRicerca(string search)
         {
             List<Trip> searchResults = gestione.SearchTrips(search);
             ViewBag.SearchText = search;
             return View(searchResults);
         }
-
     }
 }

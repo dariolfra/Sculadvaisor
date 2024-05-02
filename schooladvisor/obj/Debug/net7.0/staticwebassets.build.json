@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZkwSQni8qSeBBvS0T7YOjcVZC0JCBBkKunOFOCsXYqE=",
+  "Hash": "XgecBnVasP6ooeu3AQ3Pv6aH5/qLM4O4l+H4ymSneHc=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\gue.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\images.jpeg",
+      "SourceId": "schooladvisor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
+      "BasePath": "_content/schooladvisor",
+      "RelativePath": "img/images.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\images.jpeg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\MagnifyingGlass.png",
