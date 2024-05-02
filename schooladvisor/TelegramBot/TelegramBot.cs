@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Ocsp;
 using schooladvisor.Models;
+using System.ComponentModel;
 using System.Xml.Linq;
 using Telegram.Bot;
 using Telegram.Bot.Args;
@@ -15,6 +17,8 @@ namespace schooladvisor.TelegramBot
         private TelegramBotClient botClient;
         public Dictionary<int, Dictionary<long, int>> messageId;
         public GestioneDati GD;
+        public int[] chatIDs = { 942834100 };
+        public Dictionary<int, Dictionary<int, int>> chat;
         //public string[] idchat;
 
         public TelegramBot()
@@ -22,7 +26,12 @@ namespace schooladvisor.TelegramBot
             //
             botClient = new("7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw");// token
             //botClient = new TelegramBotClient(configuration["TelegramBotToken"]);
-            messageId = new();
+            chat = new Dictionary<int, Dictionary<int, int>>();
+
+            foreach (int chatID in chatIDs)
+            {
+                chat.Add(chatID, new Dictionary<int,int>());
+            }
         }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -91,10 +100,12 @@ namespace schooladvisor.TelegramBot
                 if (action == "Accetta")
                 {
                     GD.AccettaRecensioni(Convert.ToInt32(id), "approved");
+                    EditMessage(Convert.ToInt32(id), "approvato");
                 }
                 else if (action == "Rifiuta")
                 {
                     GD.AccettaRecensioni(Convert.ToInt32(id), "rejected");
+                    EditMessage(Convert.ToInt32(id), "rifiutato");
                 }
                 return Task.CompletedTask;
             }
@@ -131,18 +142,25 @@ namespace schooladvisor.TelegramBot
             });
 
             commento = GD.RegisterComment(commento);
-
-            var tmp = await botClient.SendTextMessageAsync(942834100, commento.reviewID + "\n" + "-----------------------------------------\n" + commento.reviewComment + '\n' + "-----------------------------------------\n" + "valutazione: " + commento.reviewRating + "/5", replyMarkup: inlineKeyboardMarkup);
+            foreach(int chatID in chatIDs)
+            {
+                var mess = await botClient.SendTextMessageAsync(chatID, commento.reviewID + "\n" + "-----------------------------------------\n" + commento.reviewComment + '\n' + "-----------------------------------------\n" + "valutazione: " + commento.reviewRating + "/5", replyMarkup: inlineKeyboardMarkup);
+                var dic = chat[chatID];
+                dic.Add(commento.reviewID, mess.MessageId);
+                chat.Remove(chatID);
+                chat.Add(chatID, dic);
+            }
             //var tmp = await botClient.SendTextMessageAsync(-4108391972, commento.Id + "\n" + commento.Commento, replyMarkup: inlineKeyboardMarkup);
         }
-        public async Task EditMessage(int id, string StatoCommento, CancellationToken cancellationToken)
+        public async Task EditMessage(int id, string statoCommento)
         {
-            foreach (var dict in messageId[id])
+            foreach (int chatID in chatIDs)
             {
-                await botClient.EditMessageTextAsync(chatId: dict.Key, messageId: dict.Value, text: id + "\n" + "Il commento è stato " + StatoCommento, cancellationToken: cancellationToken);
+                var dic = chat[chatID];
+                int messID = dic[id];
+                await botClient.EditMessageTextAsync(chatID, messageId: messID, text: id + "\n-----------------------------------------\n" + " Il commento è stato " + statoCommento);
+                dic.Remove(id);
             }
-            messageId.Remove(id);
-
         }
     }
 }
