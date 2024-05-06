@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MySqlX.XDevAPI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using schooladvisor.TelegramBot;
 
 //parcheggio tilde che porcaccio iddio non ce l'ho sulla tastiera
 // ----->  ~  <-----
@@ -62,8 +63,16 @@ namespace TestWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> CommentaUscita(string comment,string username,string selectedTripId,string rating)
         {
-            gestione.RegisterComment(comment,username,selectedTripId,rating);
-            await bot.SendMessage(new Review() { reviewComment = comment, reviewRating = Convert.ToInt32(rating), reviewState = "sent", tripID = Convert.ToInt32(selectedTripId), userID = email });
+            Review commento = new Review()
+            {
+                reviewComment = comment,
+                reviewRating = Convert.ToInt32(rating),
+                reviewState = "sent",
+                tripID = Convert.ToInt32(selectedTripId),
+                userID = username
+            };
+            gestione.RegisterComment(commento);
+            await bot.SendMessage(new Review() { reviewComment = comment, reviewRating = Convert.ToInt32(rating), reviewState = "sent", tripID = Convert.ToInt32(selectedTripId), userID = username });
             return View("ConfermaCommento");
         }
 
@@ -231,37 +240,43 @@ namespace TestWeb.Controllers
             return View(trip);
         }
         [HttpPost]
-        public async Task<IActionResult> ModificaUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription,string selectedTripID)
+        public async Task<IActionResult> ModificaUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription,string selectedTripID,string action)
         {
-            Trip t = new Trip() {tripDate = tripDate, tripDescription = tripDescription, tripName = tripName, tripID = Convert.ToInt32(selectedTripID) };
+            Trip t = new Trip() { tripDate = tripDate, tripDescription = tripDescription, tripName = tripName, tripID = Convert.ToInt32(selectedTripID) };
 
-            if (file != null && file.Length > 0)
+            if (action == "edit")
             {
-                var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-
-                if (!Directory.Exists(uploadDir))
+                if (file != null && file.Length > 0)
                 {
-                    Directory.CreateDirectory(uploadDir);
+                    var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+
+                    if (!Directory.Exists(uploadDir))
+                    {
+                        Directory.CreateDirectory(uploadDir);
+                    }
+
+                    // Genera un nome univoco per il file caricato
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadDir, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var relativeFilePath = Path.Combine("/img", fileName);
+
+                    t.image = relativeFilePath;
                 }
-
-                // Genera un nome univoco per il file caricato
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                var filePath = Path.Combine(uploadDir, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                // Imposta il percorso relativo del file per il viaggio
-                var relativeFilePath = Path.Combine("/img", fileName);
-
-                t.image = relativeFilePath;
+                gestione.EditTrip(t);
             }
-            gestione.EditTrip(t);
+            else if (action == "delete")
+            {
+                gestione.DeleteTrip(t.tripID);
+            }
 
-            var trips = gestione.GetLastTrips();
-            return RedirectToAction("Index",trips);
+            var trips = gestione.GetTripList();
+            return RedirectToAction("Uscite",trips);
         }
     }
 }

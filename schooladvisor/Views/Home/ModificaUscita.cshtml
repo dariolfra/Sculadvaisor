@@ -132,6 +132,23 @@
         display: flex;
         justify-content: space-between;
     }
+    #submitAndDeleteDiv{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #delete {
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        color: #ab0303;
+        background-color: #ff8080; 
+        margin: 0 auto;
+        display: block;
+        cursor: pointer;
+    }
+
 </style>
 
 
@@ -176,7 +193,10 @@
             Trascina il file o fai clic per selezionarlo (solo immagini)
         </div>  
         <br />
-        <button type="submit" id="submit">Invia</button>
+        <div id="submitAndDeleteDiv">
+            <button type="submit" name="action" value="edit" id="submit">Modifica</button>
+            <button type="submit" name="action" value="delete" id="delete">Elimina</button>
+        </div>
         <br /><br />
     </form>
 </div>
@@ -257,32 +277,6 @@
     }
 
     document.getElementById("myDropZone").addEventListener("click", handleDropzoneClick);
-
-    function loadPhoto() {
-        const imagePath = "@Html.Raw(Model.image)";
-        const dropZone = document.getElementById("myDropZone");
-        dropZone.innerHTML = "";
-
-        const fileImg = document.createElement("img");
-        fileImg.src = imagePath;
-        fileImg.width = 100;
-
-        const fileInfoContainer = document.createElement("div");
-        fileInfoContainer.classList.add("file-info-container");
-
-        const fileName = imagePath.split("/").pop();
-
-        const fileInfo = document.createElement("div");
-        fileInfo.textContent = `${fileName}`;
-        fileInfoContainer.appendChild(fileImg);
-        fileInfoContainer.appendChild(fileInfo);
-
-        dropZone.appendChild(fileInfoContainer);
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        loadPhoto(event);
-    });
 
     document.getElementById("file").addEventListener("change", function () {
         const files = this.files;

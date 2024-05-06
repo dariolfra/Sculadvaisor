@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\goofyCat.jpeg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Views\Home\AccessoNegato.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

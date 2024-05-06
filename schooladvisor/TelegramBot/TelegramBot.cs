@@ -17,7 +17,7 @@ namespace schooladvisor.TelegramBot
         private TelegramBotClient botClient;
         public Dictionary<int, Dictionary<long, int>> messageId;
         public GestioneDati GD;
-        public int[] chatIDs = { 942834100 };
+        public int[] chatIDs = { 521459468 };
         public Dictionary<int, Dictionary<int, int>> chat;
         //public string[] idchat;
 

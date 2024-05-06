@@ -37,11 +37,12 @@ namespace schooladvisor.Models
             return commento;
         }
 
-        public List<Review>GetApprovedComments(string selectedTripId)
+        public List<Review> GetApprovedComments(string selectedTripId)
         {
             using var con = new MySqlConnection(s);
             string sql = "SELECT * FROM reviews JOIN trips ON trips.tripID = reviews.tripID WHERE reviewState='approved' AND trips.tripID=@Id";
-            return con.Query<Review>(sql, new {Id = selectedTripId}).ToList();
+            return con.Query<Review>(sql, new { Id = selectedTripId }).ToList();
+        }
         public int GetNextID()
         {
             using var con = new MySqlConnection(s);
@@ -106,6 +107,13 @@ namespace schooladvisor.Models
                 sql = "UPDATE trips SET tripName = @name,tripDate = @date, tripDescription = @descr WHERE tripID = @id";
                 con.Execute(sql, new { name = trip.tripName, date = trip.tripDate, descr = trip.tripDescription,id = trip.tripID });
             }
+        }
+
+        public void DeleteTrip(int tripID)
+        {
+            using var con = new MySqlConnection(s);
+            string sql = "DELETE FROM trips WHERE tripID = @id";
+            con.Execute(sql, new { id = tripID });
         }
     }
 }

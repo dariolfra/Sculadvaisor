@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NwK4w7yeAjVlPQJu7gS3E/dgFsFt9BhpvIJtRzELods=",
+  "Hash": "8D2Yzmgw0/Eb8bsv4YBBx23Fuwz4OPFXQoZyL5N+0EU=",
   "Source": "schooladvisor",
   "BasePath": "_content/schooladvisor",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\593a24da-10ce-4bea-b2a1-731ac0f03188.jpeg",
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\3b4168cc-42fb-4c8c-9b9e-1cf00b5b115e.jpg",
       "SourceId": "schooladvisor",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
       "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/593a24da-10ce-4bea-b2a1-731ac0f03188.jpeg",
+      "RelativePath": "img/3b4168cc-42fb-4c8c-9b9e-1cf00b5b115e.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,15 +99,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\593a24da-10ce-4bea-b2a1-731ac0f03188.jpeg"
+      "OriginalItemSpec": "wwwroot\\img\\3b4168cc-42fb-4c8c-9b9e-1cf00b5b115e.jpg"
     },
     {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\9df4ea82-5c61-4cf6-9e58-7b5b1d8e7c41.jpg",
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\570e92cc-caa8-4e8b-ad7d-817369b5c4d5.jpg",
       "SourceId": "schooladvisor",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
       "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/9df4ea82-5c61-4cf6-9e58-7b5b1d8e7c41.jpg",
+      "RelativePath": "img/570e92cc-caa8-4e8b-ad7d-817369b5c4d5.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\9df4ea82-5c61-4cf6-9e58-7b5b1d8e7c41.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\570e92cc-caa8-4e8b-ad7d-817369b5c4d5.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\a6d790a4-97c5-4c7a-83e0-27c57b8a96a1.jpg",
+      "SourceId": "schooladvisor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
+      "BasePath": "_content/schooladvisor",
+      "RelativePath": "img/a6d790a4-97c5-4c7a-83e0-27c57b8a96a1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\a6d790a4-97c5-4c7a-83e0-27c57b8a96a1.jpg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\AccessDenied.png",
@@ -136,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\img\\AccessDenied.png"
     },
     {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\foglioProtocollo.gif",
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\d7535471-53d1-4f9c-a538-68a84aad2bb4.jpg",
       "SourceId": "schooladvisor",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
       "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/foglioProtocollo.gif",
+      "RelativePath": "img/d7535471-53d1-4f9c-a538-68a84aad2bb4.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,15 +167,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\foglioProtocollo.gif"
+      "OriginalItemSpec": "wwwroot\\img\\d7535471-53d1-4f9c-a538-68a84aad2bb4.jpg"
     },
     {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\goofyCat.jpeg",
+      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\da599409-98d6-4b60-9dd6-dfd23b58aac9.jpg",
       "SourceId": "schooladvisor",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
       "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/goofyCat.jpeg",
+      "RelativePath": "img/da599409-98d6-4b60-9dd6-dfd23b58aac9.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,41 +184,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\goofyCat.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\gue.jpg",
-      "SourceId": "schooladvisor",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
-      "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/gue.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\gue.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\images.jpeg",
-      "SourceId": "schooladvisor",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
-      "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/images.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\images.jpeg"
+      "OriginalItemSpec": "wwwroot\\img\\da599409-98d6-4b60-9dd6-dfd23b58aac9.jpg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\MagnifyingGlass.png",
@@ -219,40 +202,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\MagnifyingGlass.png"
-    },
-    {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\pipone.jpeg",
-      "SourceId": "schooladvisor",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
-      "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/pipone.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\pipone.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\sapo.jpg",
-      "SourceId": "schooladvisor",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\",
-      "BasePath": "_content/schooladvisor",
-      "RelativePath": "img/sapo.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\sapo.jpg"
     },
     {
       "Identity": "C:\\Users\\thoma\\OneDrive\\Desktop\\DA FARE\\Sculadvaisor\\schooladvisor\\wwwroot\\js\\site.js",
