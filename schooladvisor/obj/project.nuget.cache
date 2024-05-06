@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "rqY1CVSDSkoV8bV1Q88WD3512GoSXWbTLGCvQhxSW6mF1H77pyQlfz73R4GC6wsdQ71X09X9BmhpXZ3QaVjFsQ==",
+=======
+  "dgSpecHash": "Qt3Bg/uhGrO52oYtYchTl18nZVMk9W6QDBs+EdsyMNnyiQbrsyXQlqrPQ4DNTT/Lg0aKWChvXNUiI32V/2cb5A==",
+>>>>>>> Stashed changes
   "success": true,
   "projectFilePath": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\schooladvisor.csproj",
   "expectedPackageFiles": [
@@ -38,7 +42,10 @@
     "C:\\Users\\Francesco\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Francesco\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Francesco\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+<<<<<<< Updated upstream
     "C:\\Users\\Francesco\\.nuget\\packages\\telegram.bot\\19.0.0\\telegram.bot.19.0.0.nupkg.sha512",
+=======
+>>>>>>> Stashed changes
     "C:\\Users\\Francesco\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512"
   ],
   "logs": []

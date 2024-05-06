@@ -172,8 +172,15 @@ C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net7.0\schooladvisor.pdb
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net7.0\schooladvisor.genruntimeconfig.cache
 C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\obj\Debug\net7.0\ref\schooladvisor.dll
+<<<<<<< Updated upstream
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\appsettings.json
+=======
+C:\Users\thoma\OneDrive\Desktop\DA FARE\Sculadvaisor\schooladvisor\bin\Debug\net7.0\libman.json
+C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\appsettings.json
+C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\libman.json
+>>>>>>> Stashed changes
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\schooladvisor.staticwebassets.runtime.json
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\schooladvisor.exe
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\schooladvisor.deps.json
@@ -195,7 +202,10 @@ C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\ne
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\System.Security.Permissions.dll
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\System.Windows.Extensions.dll
+<<<<<<< Updated upstream
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\Telegram.Bot.dll
+=======
+>>>>>>> Stashed changes
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\ZstdSharp.dll
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Francesco\Desktop\SchoolAdvisor\Sculadvaisor\schooladvisor\bin\Debug\net7.0\runtimes\win-x64\native\comerr64.dll

@@ -13,6 +13,21 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\593a24da-10ce-4bea-b2a1-731ac0f03188.jpeg",
+      "PackagePath": "staticwebassets\\img\\593a24da-10ce-4bea-b2a1-731ac0f03188.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\AccessDenied.png",
+      "PackagePath": "staticwebassets\\img\\AccessDenied.png"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\MagnifyingGlass.png",
+      "PackagePath": "staticwebassets\\img\\MagnifyingGlass.png"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\foglioProtocollo.gif",
       "PackagePath": "staticwebassets\\img\\foglioProtocollo.gif"
     },
@@ -21,10 +36,28 @@
       "PackagePath": "staticwebassets\\img\\goofyCat.jpeg"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\gue.jpg",
+      "PackagePath": "staticwebassets\\img\\gue.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\images.jpeg",
+      "PackagePath": "staticwebassets\\img\\images.jpeg"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\pipone.jpeg",
       "PackagePath": "staticwebassets\\img\\pipone.jpeg"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\img\\sapo.jpg",
+      "PackagePath": "staticwebassets\\img\\sapo.jpg"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -209,6 +242,57 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\basic.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\basic.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\basic.min.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\basic.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone-amd-module.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone-amd-module.js"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone-amd-module.min.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone-amd-module.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone.js"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone.min.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\dropzone.min.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\dropzone.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\min\\basic.min.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\min\\basic.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\min\\dropzone-amd-module.min.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\min\\dropzone-amd-module.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\min\\dropzone.min.css",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\min\\dropzone.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\dropzone\\min\\dropzone.min.js",
+      "PackagePath": "staticwebassets\\lib\\dropzone\\min\\dropzone.min.js"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "C:\\Users\\Francesco\\Desktop\\SchoolAdvisor\\Sculadvaisor\\schooladvisor\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
