@@ -1,0 +1,291 @@
+﻿@model Trip
+@{
+    ViewData["Title"] = "Modifica Uscita";
+}
+
+<style>
+
+    #currentImg {
+        width: 100%;
+        border-radius: 12px;
+        height: 400px;
+        object-fit: cover;
+    }   
+
+    .container{
+        max-width: 70vw;
+
+        margin: 0 auto;
+
+        margin-top: 5vh;
+    }
+
+    .card {
+
+          background-color: white;
+
+          border: 1px solid #bacdd8;
+
+          padding: 8px;
+
+          border-radius: 12px;
+          margin-bottom: 5vh;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 600;
+
+      margin-top: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #7f8c9b;
+      line-height: 150%;
+    }
+
+    .card__details {
+      padding: 16px 8px 8px 8px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+
+      font-weight: 600;
+      color: #0077ff;
+      background-color: #e0efff;
+
+      margin: 0 auto;
+      display: block;
+
+      cursor: pointer;
+    }
+    #username{
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    #myDropZone.dragover {
+        border-color: #aaa; /* Cambia il colore del bordo quando trascini sopra */
+        background-color: #f0f0f0; /* Cambia il colore di sfondo durante il trascinamento */
+    }
+
+    .file-info-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+        .file-info-container img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .file-info-container div {
+            margin-top: 5px;
+        }
+
+    #tripDescription {
+        min-height: 100px;
+        resize: none;
+    }
+
+    #inputFieldsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+        #inputFieldsContainer input {
+            min-width: 200px;
+        }
+
+    #myDropZone {
+        border: 3px dashed #ccc;
+        border-radius: 20px;
+        background-color: #f9f9f9;
+        min-height: 200px;
+        padding: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #666;
+        transition: border-color 0.3s ease-in-out;
+        background-color: rgba(181, 181, 172, 0.15);
+    }
+
+        #myDropZone:hover {
+            border-color: #aaa;
+            cursor: pointer;
+        }
+
+    .nameAndDate {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 16px;
+    }
+
+    #nameAndDate {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+
+<h1>@ViewData["Title"]</h1>
+<div class="container">
+     <div class="card">
+        <img id="currentImg"src="@Model.image">
+        <div class="card__details">
+            <div id="nameAndDate">
+                <div class="nameAndDate">@Model.tripName</div>
+                <div class="nameAndDate">@Model.tripDate.ToString("dd/MM/yyyy")</div>
+            </div>
+             <p>@Model.tripDescription</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form asp-controller="Home" asp-action="ModificaUscita" id="editTrip" method="post" enctype="multipart/form-data">
+        <div id="inputFieldsContainer">
+            <div class="form-group">
+                <input type="text" id="tripName" name="tripName" class="form-control" placeholder="Titolo" value="@Model.tripName"/>
+            </div>
+            <div class="form-group">
+                <input type="date" id="tripDate" name="tripDate" class="form-control" placeholder="Data" value="@Model.tripDate.ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <textarea id="tripDescription" name="tripDescription" class="form-control" placeholder="Descrizione">@Model.tripDescription</textarea>
+        </div>
+        <br />
+        <input type="file" id="file" name="file" accept="image/*" style="display: none;" />
+        <input type="text" id="selectedTripId" name="selectedTripId" style="display: none;" value="@Model.tripID"/>
+
+        <div class="dropzone" id="myDropZone"
+             ondragover="handleDragOver(event)"
+             ondragenter="handleDragEnter(event)"
+             ondragleave="handleDragLeave(event)"
+             ondrop="handleDrop(event)"
+             accept="image/*">
+            Trascina il file o fai clic per selezionarlo (solo immagini)
+        </div>  
+        <br />
+        <button type="submit" id="submit">Invia</button>
+        <br /><br />
+    </form>
+</div>
+
+<script>
+    function handleDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "copy";
+    }
+
+    function handleDragEnter(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.add("dragover");
+    }
+
+    function handleDragLeave(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.remove("dragover");
+    }
+
+    function handleDrop(event) {
+        event.preventDefault();
+        document.getElementById("myDropZone").classList.remove("dragover");
+        const files = event.dataTransfer.files;
+        const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+
+        const fileList = new DataTransfer();
+        imageFiles.forEach(file => {
+            fileList.items.add(file);
+        });
+
+        const fileInput = document.getElementById("file");
+        fileInput.files = fileList.files;
+
+        showFiles(imageFiles);
+    }
+
+    function showImage(imageSrc) {
+        const dropZone = document.getElementById("myDropZone");
+        dropZone.innerHTML = "";
+
+        const fileImg = document.createElement("img");
+        fileImg.src = imageSrc;
+        fileImg.width = 100;
+
+        dropZone.appendChild(fileImg);
+    }
+
+    function showFileInfo(fileName, fileSize) {
+        const fileInfoContainer = document.createElement("div");
+        fileInfoContainer.classList.add("file-info-container");
+
+        const fileInfo = document.createElement("div");
+        fileInfo.textContent = `${fileName} (${fileSize} bytes)`;
+        fileInfoContainer.appendChild(fileInfo);
+
+        const dropZone = document.getElementById("myDropZone");
+        dropZone.appendChild(fileInfoContainer);
+    }
+
+    function showFiles(files) {
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileName = file.name;
+            const fileSize = file.size;
+
+            const fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                showImage(event.target.result);
+                showFileInfo(fileName, fileSize);
+            }
+            fileReader.readAsDataURL(file);
+        }
+    }
+
+    function handleDropzoneClick() {
+        document.getElementById("file").click();
+    }
+
+    document.getElementById("myDropZone").addEventListener("click", handleDropzoneClick);
+
+    function loadPhoto() {
+        const imagePath = "@Html.Raw(Model.image)";
+        const dropZone = document.getElementById("myDropZone");
+        dropZone.innerHTML = "";
+
+        const fileImg = document.createElement("img");
+        fileImg.src = imagePath;
+        fileImg.width = 100;
+
+        const fileInfoContainer = document.createElement("div");
+        fileInfoContainer.classList.add("file-info-container");
+
+        const fileName = imagePath.split("/").pop();
+
+        const fileInfo = document.createElement("div");
+        fileInfo.textContent = `${fileName}`;
+        fileInfoContainer.appendChild(fileImg);
+        fileInfoContainer.appendChild(fileInfo);
+
+        dropZone.appendChild(fileInfoContainer);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        loadPhoto(event);
+    });
+
+    document.getElementById("file").addEventListener("change", function () {
+        const files = this.files;
+        showFiles(files);
+    });
+</script>

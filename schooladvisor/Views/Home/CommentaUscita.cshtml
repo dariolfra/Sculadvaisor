@@ -111,6 +111,12 @@
       cursor: pointer;
     }
 
+    #username{
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 16px;
+    }
     
 </style>
 
@@ -145,9 +151,11 @@
 
 
             <div class="commentBox">
+                <input type="text" id="username" name="username" placeholder="username" required/>
+                <br /><br />
                 <textarea name="Comment" class="comment" placeholder="Inserisci commento" rows="5" cols="40" data-val-required="The Description field is required." 
                      data-val-maxlength-max="5000" data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'." 
-                     data-val="true"></textarea>
+                     data-val="true" required></textarea>
                 <button type="submit">Pubblica commento</button>
             </div>
         </div>

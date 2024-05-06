@@ -27,7 +27,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Uscite">Uscite</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (Context.Session.GetString("utente") == "admin")
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AggiungiUscita">Aggiungi Uscita</a>

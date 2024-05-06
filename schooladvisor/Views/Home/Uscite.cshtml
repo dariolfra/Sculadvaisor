@@ -5,110 +5,109 @@
 }
 
 <style>
-
     img {
         width: 100%;
         border-radius: 12px;
         height: 400px;
         object-fit: cover;
-    }   
+    }
 
-    .container{
+    .container {
         max-width: 70vw;
-
         margin: 0 auto;
-
         margin-top: 5vh;
     }
 
     .card {
-          
-          background-color: white;
-
-          border: 1px solid #bacdd8;
-
-          padding: 8px;
-
-          border-radius: 12px;
-
-          margin-top:10px;
-          margin-bottom:10px;
+        background-color: white;
+        border: 1px solid #bacdd8;
+        padding: 8px;
+        border-radius: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
-    
-    .nameAndDate {
-      font-size: 24px;
-      font-weight: 600;
 
-      margin-top: 16px;
+    .nameAndDate {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 16px;
     }
 
     p {
-      font-size: 14px;
-      color: #7f8c9b;
-      line-height: 150%;
+        font-size: 14px;
+        color: #7f8c9b;
+        line-height: 150%;
     }
 
     .card__details {
-      padding: 16px 8px 8px 8px;
+        padding: 16px 8px 8px 8px;
     }
 
     button {
-      border: none;
-      padding: 12px 24px;
-      border-radius: 50px;
-
-      font-weight: 600;
-      color: #0077ff;
-      background-color: #e0efff;
-
-      margin: 0 auto;
-      display: block;
-
-      cursor: pointer;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        color: #0077ff;
+        background-color: #e0efff;
+        margin: 0 auto;
+        display: block;
+        cursor: pointer;
     }
+
     .buttonContainer {
-        display: flex; 
-        justify-content: space-between; 
-        margin-top: 10px; 
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
     }
-    #nameAndDate{
+
+    #nameAndDate {
         display: flex;
         justify-content: space-between;
     }
 </style>
+
 <div class="container">
     <h1>@ViewData["Title"]</h1>
-     <main role="main" class="pb-5">
-    @foreach (var trip in Model)
-    {
-          <div class="card">
-          <img src="@trip.image">
-
-          <div class="card__details">
-              <div id="nameAndDate">
-                   <div class="nameAndDate">@trip.tripName</div>
-                   <div class="nameAndDate">@trip.tripDate.ToString("dd/MM/yyyy")</div>
-              </div>
-              <p>@trip.tripDescription</p>
-          </div>
-          <div class="buttonContainer">
-              <button onclick="redirectLoginFirebase(@trip.tripID)">Lascia Recensione</button>
-              <button onclick="redirectVisualizzaCommenti(@trip.tripID)">Visualizza Commenti</button>
-          </div>
-        </div>
-    }
-    <main/>
+    <main role="main" class="pb-5">
+        @foreach (var trip in Model)
+        {
+            <div class="card">
+                <img src="@trip.image">
+                <div class="card__details">
+                    <div id="nameAndDate">
+                        <div class="nameAndDate">@trip.tripName</div>
+                        <div class="nameAndDate">@trip.tripDate.ToString("dd/MM/yyyy")</div>
+                    </div>
+                    <p>@trip.tripDescription</p>
+                </div>
+                <div class="buttonContainer">
+                    <button onclick="redirectCommentaUscita('@trip.tripID')">Lascia Recensione</button>
+                    <button onclick="redirectVisualizzaCommenti('@trip.tripID')">Visualizza Commenti</button>
+                    @if(Context.Session.GetString("utente") == "admin")
+                    {
+                        <button onclick="redirectModificaUscita('@trip.tripID')">Modifica Uscita</button>
+                    }
+                </div>
+            </div>
+        }
+    </main>
 </div>
 
-
 <script>
-    function redirectLoginFirebase(tripID){
+    function redirectCommentaUscita(tripID) {
         //l'uscita selezionata viene salvata nella sessione corrente, in questo modo dopo il login è possibile commentare
         sessionStorage.setItem('SelectedTripId', tripID);
-        window.location.href = "/Home/LoginFirebase"
+        window.location.href = "/Home/CommentaUscita?selectedTripId=" + tripID; // Assicurati che il parametro venga passato correttamente nell'URL
     }
-       function redirectVisualizzaCommenti(tripID) {
+
+    function redirectVisualizzaCommenti(tripID) {
         sessionStorage.setItem('SelectedTripId', tripID);
         window.location.href = "/Home/VisualizzaCommenti?selectedTripId=" + tripID;
+    }
+
+    function redirectModificaUscita(tripID) {
+        sessionStorage.setItem('SelectedTripId', tripID);
+        window.location.href = "/Home/ModificaUscita?selectedTripId=" + tripID;
     }
 </script>

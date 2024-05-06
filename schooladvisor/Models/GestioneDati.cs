@@ -62,5 +62,21 @@ namespace schooladvisor.Models
             string sql = "SELECT * FROM trips ORDER BY trips.tripDate DESC LIMIT 3";
             return con.Query<Trip>(sql).ToList();
         }
+
+        public void EditTrip(Trip trip)
+        {
+            using var con = new MySqlConnection(s);
+            string sql = "";
+            if (!String.IsNullOrEmpty(trip.image))
+            {
+                sql = "UPDATE trips SET tripName = @name,tripDate = @date, tripDescription = @descr, image = @img WHERE tripID = @id";
+                con.Execute(sql, new { name = trip.tripName, date = trip.tripDate, descr = trip.tripDescription, img = trip.image, id = trip.tripID });
+            }
+            else
+            {
+                sql = "UPDATE trips SET tripName = @name,tripDate = @date, tripDescription = @descr WHERE tripID = @id";
+                con.Execute(sql, new { name = trip.tripName, date = trip.tripDate, descr = trip.tripDescription,id = trip.tripID });
+            }
+        }
     }
 }

@@ -50,16 +50,15 @@ namespace TestWeb.Controllers
             var trips = gestione.GetTripList();
             return View(trips);
         }
-        public IActionResult CommentaUscita(string selectedTripId,string email)
+        public IActionResult CommentaUscita(string selectedTripId)
         {
-            ViewData["email"] = email;
             var trip = gestione.GetTrip(selectedTripId);
             return View(trip);
         }
         [HttpPost]
-        public async Task<IActionResult> CommentaUscita(string comment,string email,string selectedTripId,string rating)
+        public async Task<IActionResult> CommentaUscita(string comment,string username,string selectedTripId,string rating)
         {
-            gestione.RegisterComment(comment,email,selectedTripId,rating);
+            gestione.RegisterComment(comment,username,selectedTripId,rating);
             return View("ConfermaCommento");
         }
         public async Task<IActionResult> ProvaTelegram()
@@ -169,7 +168,7 @@ namespace TestWeb.Controllers
             return View();
         }
 
-        //[OnlyAdmin]
+        [OnlyAdmin]
         public IActionResult AggiungiUscita()
         {
             return View();
@@ -211,6 +210,52 @@ namespace TestWeb.Controllers
             List<Trip> searchResults = gestione.SearchTrips(search);
             ViewBag.SearchText = search;
             return View(searchResults);
+        }
+        public IActionResult Logout()
+        {
+            var trips = gestione.GetLastTrips();
+            _session.SetString("utente", "utente");
+            return RedirectToAction("Index",trips);
+        }
+
+        [OnlyAdmin]
+        public IActionResult ModificaUscita(string selectedTripID)
+        {
+            var trip = gestione.GetTrip(selectedTripID);
+            return View(trip);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ModificaUscita(IFormFile file, string tripName, DateTime tripDate, string tripDescription,string selectedTripID)
+        {
+            Trip t = new Trip() {tripDate = tripDate, tripDescription = tripDescription, tripName = tripName, tripID = Convert.ToInt32(selectedTripID) };
+
+            if (file != null && file.Length > 0)
+            {
+                var uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+
+                if (!Directory.Exists(uploadDir))
+                {
+                    Directory.CreateDirectory(uploadDir);
+                }
+
+                // Genera un nome univoco per il file caricato
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                var filePath = Path.Combine(uploadDir, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                // Imposta il percorso relativo del file per il viaggio
+                var relativeFilePath = Path.Combine("/img", fileName);
+
+                t.image = relativeFilePath;
+            }
+            gestione.EditTrip(t);
+
+            var trips = gestione.GetLastTrips();
+            return RedirectToAction("Index",trips);
         }
     }
 }
