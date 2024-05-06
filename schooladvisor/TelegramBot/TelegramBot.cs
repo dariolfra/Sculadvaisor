@@ -17,15 +17,12 @@ namespace schooladvisor.TelegramBot
         private TelegramBotClient botClient;
         public Dictionary<int, Dictionary<long, int>> messageId;
         public GestioneDati GD;
-        public int[] chatIDs = { 521459468 };
+        public int[] chatIDs = { 521459468 /*942834100*/ };
         public Dictionary<int, Dictionary<int, int>> chat;
-        //public string[] idchat;
 
         public TelegramBot()
         {
-            //
             botClient = new("7102056047:AAEvMieOy6ZfDYCjNwnV8df36gTAQR0liIw");// token
-            //botClient = new TelegramBotClient(configuration["TelegramBotToken"]);
             chat = new Dictionary<int, Dictionary<int, int>>();
 
             foreach (int chatID in chatIDs)
@@ -66,29 +63,6 @@ namespace schooladvisor.TelegramBot
             Console.WriteLine(ErrorMessage);
             return Task.CompletedTask;
         }
-        public bool AggiornaStatoCommento(int Id, string Stato)
-        {
-            //string query = @"UPDATE commenti 
-            //         SET stato = @Stato
-            //         WHERE Id = @Id";
-            //var param = new Commenti
-            //{
-            //    Stato = Stato,
-            //    Id = Id
-            //};
-            //bool esito;
-            //try
-            //{
-            //    con.Execute(query, param);
-            //    esito = true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Gestione dell'eccezione, se necessario
-            //    esito = false;
-            //}
-            return true;
-        }
         public Task HandleUpdateAsync(ITelegramBotClient botClient, Telegram.Bot.Types.Update update, CancellationToken cancellationToken)
         {
             if (update.CallbackQuery != null)
@@ -118,14 +92,12 @@ namespace schooladvisor.TelegramBot
                 return null;
             }
 
-
-
-            Console.WriteLine(update.Message.Chat.Id);
+            /*Console.WriteLine(update.Message.Chat.Id);
             botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
                 text: update.Message.Text,
                 cancellationToken: cancellationToken
-                );
+                );*/
             return Task.CompletedTask;
         }
 
@@ -150,7 +122,6 @@ namespace schooladvisor.TelegramBot
                 chat.Remove(chatID);
                 chat.Add(chatID, dic);
             }
-            //var tmp = await botClient.SendTextMessageAsync(-4108391972, commento.Id + "\n" + commento.Commento, replyMarkup: inlineKeyboardMarkup);
         }
         public async Task EditMessage(int id, string statoCommento)
         {
